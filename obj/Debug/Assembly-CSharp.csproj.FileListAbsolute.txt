@@ -1,0 +1,1 @@
+\\nstu-nas01.uwe.ac.uk\users1$\cm3-king\Personal\Gameplay Programming Y2\Switches and Doors REPO\DoorsAndSwitches\Switches and Doors\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
