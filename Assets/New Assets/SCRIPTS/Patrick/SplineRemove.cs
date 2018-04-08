@@ -23,7 +23,7 @@ public class SplineRemove : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            Player.GetComponent<PlayerController>().freeControl = false;
+            //Player.GetComponent<PlayerController>().freeControl = false;
         }
     }
 }
