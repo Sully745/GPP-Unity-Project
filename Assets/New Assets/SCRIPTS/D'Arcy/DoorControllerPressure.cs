@@ -6,6 +6,7 @@ public class DoorControllerPressure : MonoBehaviour
 {
     public GameObject _door;
     private Vector3 _door_origin_position;
+    public GameObject _door_open_pos;
     public bool _door_open = false;
     public GameObject _button;
     public GameObject _plate;
@@ -26,7 +27,7 @@ public class DoorControllerPressure : MonoBehaviour
         if (_door_open)
         {
             _door.transform.position = Vector3.Lerp
-                (_door.transform.position, _door_origin_position + new Vector3(2, 0, 0), 5 * Time.deltaTime);
+                (_door.transform.position, _door_open_pos.transform.position, 5 * Time.deltaTime);
             _button.GetComponent<Renderer>().material = _mat_active;
             _plate.GetComponent<Renderer>().material = _mat_active;
             _switch_activator.GetComponent<Renderer>().material = _mat_active;
@@ -40,5 +41,4 @@ public class DoorControllerPressure : MonoBehaviour
             _switch_activator.GetComponent<Renderer>().material = _mat_inactive;
         }
     }
-
 }
