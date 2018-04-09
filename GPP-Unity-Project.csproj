@@ -118,8 +118,10 @@
     <Compile Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Scripts\Triangles.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorAutoTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorButtonTrigger.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorCollectableTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorControllerAuto.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorControllerButton.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorControllerCollectable.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorControllerKey.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorControllerPressure.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorControllerTimed.cs" />
@@ -128,6 +130,8 @@
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorTimedTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\FadeScene.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\KeyPickUp.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PressurePlatformTrigger.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PressurePlatfromController.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerNextLevel.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerPreviousLevel.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Bezier.cs" />
