@@ -138,6 +138,7 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierControlPointMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierSpline.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Camera2_5D.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpBoost.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpTimer.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpUpgrade.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Line.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\PlatformCollision.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Powerup.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Rotator.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SpeedBoost.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineDecorator.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineRemove.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineTrigger.cs" />
