@@ -26,9 +26,9 @@ public class SplineTrigger : MonoBehaviour
             Player.GetComponent<SplineWalker>().spline = spline;
             Player.GetComponent<SplineWalker>().progress = 0;
             //Restricts player movement to the spline
-            Player.GetComponent<PlayerController>().freeControl = false;
+            //Player.GetComponent<PlayerController>().freeControl = false;
             //Rotating the camera
-            Camera.GetComponent<PlayerController>().camSpline = true;
+            //Camera.GetComponent<PlayerController>().camSpline = true;
 
         }
         else if (collider.tag == "Player" && Player.GetComponent<SplineWalker>().spline != null)
@@ -36,13 +36,13 @@ public class SplineTrigger : MonoBehaviour
             //Remove from spline
             Player.GetComponent<SplineWalker>().spline = null;
             //Allow full control
-            Player.GetComponent<PlayerController>().freeControl = true;
+            //Player.GetComponent<PlayerController>().freeControl = true;
             //Rotating the camera
-            Camera.GetComponent<PlayerController>().camSpline = false;
+            //Camera.GetComponent<PlayerController>().camSpline = false;
             //Assign the view to the back of the player
             //Camera.GetComponent<NewCameraController>().hasRot;
-            Camera.GetComponent<PlayerController>().currentAngle = 2;
-            Camera.GetComponent<PlayerController>().currentView = Camera.GetComponent<PlayerController>().views[Camera.GetComponent<PlayerController>().currentAngle];
+            //Camera.GetComponent<PlayerController>().currentAngle = 2;
+            //Camera.GetComponent<PlayerController>().currentView = Camera.GetComponent<PlayerController>().views[Camera.GetComponent<PlayerController>().currentAngle];
 
 
         }

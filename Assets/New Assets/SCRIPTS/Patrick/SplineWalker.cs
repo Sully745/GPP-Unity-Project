@@ -42,26 +42,26 @@ public class SplineWalker : MonoBehaviour
 
         }
 
-        if (Player.GetComponent<PlayerController>().freeControl == false)
-        {
-            if (lookForward)
-            {
+        //if (Player.GetComponent<PlayerController>().freeControl == false)
+        //{
+        //    if (lookForward)
+        //    {
 
-                float Move = Player.GetComponent<PlayerController>().MoveForward;
+        //        float Move = Player.GetComponent<PlayerController>().MoveForward;
 
-                progress += Move / 90;
+        //        progress += Move / 90;
 
-                 position = spline.GetPoint(progress);
+        //         position = spline.GetPoint(progress);
 
-                position = new Vector3(spline.GetPoint(progress).x, Player.transform.position.y, spline.GetPoint(progress).z);
+        //        position = new Vector3(spline.GetPoint(progress).x, Player.transform.position.y, spline.GetPoint(progress).z);
 
-                transform.localPosition = position;
-                transform.LookAt(position + spline.GetDirection(progress));
+        //        transform.localPosition = position;
+        //        transform.LookAt(position + spline.GetDirection(progress));
 
             
 
-            }
-        }
+        //    }
+        //}
 
         //Debug.Log(progress);
     }

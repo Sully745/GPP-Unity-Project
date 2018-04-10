@@ -36,7 +36,7 @@ public class JumpUpgrade : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player") //speed completed
         {
-            Player.GetComponent<PlayerController>().jumpTransfer = true;
+            //Player.GetComponent<PlayerController>().jumpTransfer = true;
             StartCoroutine(jumpDuration());
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
@@ -49,13 +49,13 @@ public class JumpUpgrade : MonoBehaviour
     IEnumerator jumpDuration() //completed
     {
         yield return new WaitForSeconds(10);
-        Player.GetComponent<PlayerController>().doubleJump = false;
+        //Player.GetComponent<PlayerController>().doubleJump = false;
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;
         gameObject.GetComponent<ParticleSystem>().enableEmission = true;
        // Player.GetComponent<ParticleSystem>().Stop(); //nani
         JumpEffect.GetComponent<ParticleSystem>().Stop();
-        Player.GetComponent<PlayerController>().jumpTransfer = false;
+        //Player.GetComponent<PlayerController>().jumpTransfer = false;
 
     }
 }
