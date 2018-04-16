@@ -27,12 +27,14 @@ public class DoorControllerAuto : MonoBehaviour
             _door.transform.position = Vector3.Lerp
                 (_door.transform.position, _door_open_pos.transform.position, 5 * Time.deltaTime);
             _button.GetComponent<Renderer>().material = _mat_active;
+            _door.GetComponent<Renderer>().material = _mat_active;
         }
         else
         {
             _door.transform.position = Vector3.Lerp
                 (_door.transform.position, _door_origin_position, 5 * Time.deltaTime);
             _button.GetComponent<Renderer>().material = _mat_inactive;
+            _door.GetComponent<Renderer>().material = _mat_inactive;
         }
 	}
 
