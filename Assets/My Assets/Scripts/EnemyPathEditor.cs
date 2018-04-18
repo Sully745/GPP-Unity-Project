@@ -5,14 +5,14 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class EnemyPathEditor : MonoBehaviour
 {
-
-    GameObject[] nodes;
-    public GameObject node;
     public bool show_in_game;
-    List<GameObject> draw_path;
-    Movement_Style movement_style;
+    public GameObject path_clone;
     public Material mat_organic;
     public Material mat_machine;
+
+    private GameObject[] nodes;
+    private List<GameObject> draw_path;
+    private Movement_Style movement_style;
 
     // Use this for initialization
     void Start()
@@ -39,15 +39,6 @@ public class EnemyPathEditor : MonoBehaviour
 
     private void DrawPathEditorMachine()
     {
-        //foreach (GameObject clone in draw_path)
-        //{
-        //    DestroyImmediate(clone);
-        //}
-        //GameObject[] clones = GameObject.FindGameObjectsWithTag("Path Clone");
-        //foreach (GameObject clone in clones)
-        //{
-        //    DestroyImmediate(clone);
-        //}
         draw_path.Clear();
 
         if (!Application.isPlaying || show_in_game)
@@ -62,7 +53,7 @@ public class EnemyPathEditor : MonoBehaviour
                     float track = .1f * j;
                     track_pos = Vector3.Lerp(nodes[i].transform.position, nodes[i + 1].transform.position, track);
 
-                    GameObject clone = Instantiate(node, track_pos, Quaternion.identity);
+                    GameObject clone = Instantiate(path_clone, track_pos, Quaternion.identity);
                     clone.tag = "Path Clone";
                     clone.GetComponent<MeshRenderer>().material = mat_machine;
                     clone.hideFlags = HideFlags.HideInHierarchy;
@@ -75,15 +66,6 @@ public class EnemyPathEditor : MonoBehaviour
 
     private void DrawPathEditorOrganic()
     {
-        //foreach (GameObject clone in draw_path)
-        //{
-        //    DestroyImmediate(clone);
-        //}
-        //GameObject[] clones = GameObject.FindGameObjectsWithTag("Path Clone");
-        //foreach (GameObject clone in clones)
-        //{
-        //    DestroyImmediate(clone);
-        //}
         draw_path.Clear();
 
         if (!Application.isPlaying || show_in_game)
@@ -118,7 +100,7 @@ public class EnemyPathEditor : MonoBehaviour
                         track_pos = Vector3.Lerp(nodes[i].transform.position, nodes[i + 1].transform.position, track);
                         increment = 1;
                     }
-                    GameObject clone = Instantiate(node, track_pos, Quaternion.identity);
+                    GameObject clone = Instantiate(path_clone, track_pos, Quaternion.identity);
                     clone.tag = "Path Clone";
                     clone.GetComponent<MeshRenderer>().material = mat_organic;
                     clone.hideFlags = HideFlags.HideInHierarchy;
@@ -127,8 +109,6 @@ public class EnemyPathEditor : MonoBehaviour
                 i += increment;
             }
         }
-
     }
-
 }
 

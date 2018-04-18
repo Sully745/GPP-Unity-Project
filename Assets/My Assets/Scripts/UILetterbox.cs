@@ -24,5 +24,6 @@ public class UILetterbox : MonoBehaviour {
         new_pos_top.y = Mathf.MoveTowards(new_pos_top.y, target_pos_y_top, 1);
         new_pos_bottom.y = Mathf.MoveTowards(new_pos_bottom.y, target_pos_y_bottom, 1);
         transform.GetChild(0).GetComponent<Image>().rectTransform.position = new_pos_top;
-        transform.GetChild(1).GetComponent<Image>().rectTransform.position = new_pos_bottom;    }
+        transform.GetChild(1).GetComponent<Image>().rectTransform.position = new_pos_bottom;
+    }
 }

@@ -49,17 +49,17 @@ public class CameraFollow : MonoBehaviour {
     {
         if (targeting)
         {
-            UI.GetComponentInChildren<UILetterbox>().target_pos_y_top = 531;
-            UI.GetComponentInChildren<UILetterbox>().target_pos_y_bottom = 25;
+            UI.GetComponentInChildren<UILetterbox>().target_pos_y_top = Screen.height - 32;
+            UI.GetComponentInChildren<UILetterbox>().target_pos_y_bottom = 32;
         }
         else
         {
-            UI.GetComponentInChildren<UILetterbox>().target_pos_y_top = 581;
-            UI.GetComponentInChildren<UILetterbox>().target_pos_y_bottom = -25;
+            UI.GetComponentInChildren<UILetterbox>().target_pos_y_top = Screen.height + 45;
+            UI.GetComponentInChildren<UILetterbox>().target_pos_y_bottom = -45;
         }
         //Debug.DrawRay(bloxor.transform.position, (target.position + new Vector3(0, 3, 0) - bloxor.transform.position) * 1.2f, new Color (255, 0, 0));
         //Debug.DrawRay(bloxor.transform.position + (target.position + new Vector3(0, 3, 0) - bloxor.transform.position) * 1.2f, Vector3.forward * 20, new Color(255, 0, 0));
-        
+
         closest_enemy = player.GetComponent<PlayerController>().closest_enemy;
 
         camera_distance = (target.position - transform.position).magnitude;

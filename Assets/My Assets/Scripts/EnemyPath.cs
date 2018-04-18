@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class EnemyPath: MonoBehaviour
 {
-    public GameObject[] nodes;
-    public bool show_path = false;
-    public List<Vector3> _path;
-    public int target_node = 0;
-    public int next_node = 0;
-    public int prev_node = -1;
-    public List<GameObject> draw_path;//this
-    public float distance_to_node;
+    [Header("Movement Settings")]
     public Movement_Style movement_style;
     public Movement_Type movement_type;
-    public bool move_forwards = true;
-    public float delay;
-    public bool delay_bool = false;
+    public float delay = 0;
+    
+    private bool move_forwards = true;
+    private int next_node = 0;
+    private int prev_node = -1;
+    private int target_node = 0;
+    private float distance_to_node = 1.5f;
+
+    [Header("Path")]
+    public bool show_nodes = false;
+    public GameObject[] nodes;
+    public List<Vector3> _path;
+    [HideInInspector]
     public Vector3 direction;
+    
 
     // Use this for initialization
     void Start()
     {
         _path = new List<Vector3>();
-        draw_path = new List<GameObject>();
         //DrawPath();
         switch (movement_style)
         {
@@ -36,33 +39,15 @@ public class EnemyPath: MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-
-    void Update()
-    {
-        if (!show_path)
-        {
-            foreach (GameObject node in nodes)
-            {
-                node.GetComponent<MeshRenderer>().enabled = false;
-            }
-        }
-
-    }
-
     void FixedUpdate()
     {
-        switch (movement_style)
+        foreach (GameObject node in nodes)
         {
-            case Movement_Style.MACHINE:
-                SetNode();
-                SetDirection();
-                break;
-            case Movement_Style.ORGANIC:
-                SetNode();
-                SetDirection();
-                break;
+            node.GetComponent<MeshRenderer>().enabled = show_nodes;
         }
+
+        SetNode();
+        SetDirection();
     }
 
     private void SetDirection()
@@ -86,7 +71,7 @@ public class EnemyPath: MonoBehaviour
             }
             if (distance <= distance_to_node && next_node == _path.Count - 1)
             {
-                EndPath();
+                StartCoroutine(EndPath());
             }
         }
         else
@@ -104,27 +89,21 @@ public class EnemyPath: MonoBehaviour
 
             if (distance <= distance_to_node && prev_node == 0)
             {
-                EndPath();
-
+                StartCoroutine(EndPath());
             }
         }
     }
 
 
-    IEnumerator DelayMove(bool state)
+    IEnumerator DelayMove()
     {
-        if (delay_bool)
-        {
-            yield return new WaitForSeconds(delay);
-
-        }
-        move_forwards = state;
-
+        yield return new WaitForSeconds(delay);
     }
 
-
-    private void EndPath()
+    IEnumerator EndPath()
     {
+        yield return new WaitForSeconds(delay);
+
         switch (movement_type)
         {
             case Movement_Type.LOOP:
@@ -135,7 +114,7 @@ public class EnemyPath: MonoBehaviour
                 next_node = 1;
                 break;
             case Movement_Type.PING_PONG:
-                StartCoroutine(DelayMove(!move_forwards));
+                move_forwards = !move_forwards;
                 break;
         }
     }
@@ -186,7 +165,6 @@ public class EnemyPath: MonoBehaviour
         int i = 0;
         while (i < nodes.Length - 1)
         {
-
             for (int j = 0; j <= 10; j++)
             {
                 float track = .1f * j;

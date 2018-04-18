@@ -11,32 +11,44 @@ public enum CurrentState
 
 public class BehaviourBloxor : MonoBehaviour {
     //Stats
+    [Header("Stats")]
     public int health;
     public int max_health = 3;
     public int damage = 20;
-    public int aoe_range = 15;
+
+    [Header("Attack Stats")]
     public float range = 100;
+    public float attack_length = .5f;
+    public float aoe_trigger_distance = 15;
+    public float aoe_cooldown = 10;
+    private float distance_to_player;
+
+    [Header("Movement Stats")]
     public float distance = 50;
     public float height = 20;
     public float repeat_rate = 1;
-    public float aoe_cooldown = 10;
-    public float attack_length = .5f;
     public float rotation_speed = 10;
-    private float distance_to_player;
+    Vector3 direction;
+    Quaternion rotation;
+    public CurrentState current_state;
+    private CurrentState prev_state;
+    
 
     //attack bools
     bool has_attacked = false;
-    public bool player_in_range;
-    public bool attacking;
+    private bool player_in_range;
+    private bool attacking;
     bool attack_aoe = false;
     bool aoe_ready = true;
 
     //state bools
+    [HideInInspector]
     public bool in_area;
-    public bool grounded;
+    private bool grounded;
 
     //components    
     Rigidbody rb;
+    [Header("Components")]
     public GameObject target;
     public GameObject boss_bar;
     public GameObject patrol_area;
@@ -46,12 +58,6 @@ public class BehaviourBloxor : MonoBehaviour {
     public Material mat_normal;
     public Material mat_hit;
     public Camera player_cam;
-
-    //movement
-    Vector3 direction;
-    Quaternion rotation;
-    public CurrentState current_state;
-    private CurrentState prev_state;
 
     // Use this for initialization
     void Start () {
@@ -134,8 +140,6 @@ public class BehaviourBloxor : MonoBehaviour {
 
     void Direction()
     {
-        //direction = direction - transform.position;
-        //rotation = 
         switch (current_state)
         {
             case CurrentState.ATTACKING:
@@ -177,7 +181,7 @@ public class BehaviourBloxor : MonoBehaviour {
         }
         if (grounded)
         {
-            if (aoe_ready && !has_attacked && !player_in_range && distance_to_player >= aoe_range)
+            if (aoe_ready && !has_attacked && !player_in_range && distance_to_player >= aoe_trigger_distance)
             {
                 rb.AddRelativeForce(0, height*2, distance*3, ForceMode.Impulse); //forward
                 yield return new WaitForSeconds(.5f);
@@ -209,11 +213,6 @@ public class BehaviourBloxor : MonoBehaviour {
         }        
     }
 
-    //void TakeDamage()
-    //{
-    //    StartCoroutine(HitColour());
-    //}
-
     IEnumerator TakeDamage()
     {
         health -= 1;
@@ -241,27 +240,12 @@ public class BehaviourBloxor : MonoBehaviour {
                     GameObject clone = Instantiate(gameObject, new_pos, Quaternion.identity);
                     clone.GetComponent<BehaviourBloxor>().max_health = max_health - 1;
                     clone.GetComponent<BehaviourBloxor>().has_attacked = true;
-                    //float new_scale = clone.GetComponent<BehaviourBloxor>().max_health + clone.GetComponent<BehaviourBloxor>().max_health * .5f;
                     clone.transform.localScale += new Vector3(-1f, -1f, -1f);
                 }
-            }
-            
+            }            
             Destroy(gameObject);
         }
     }
-
-    //void Attack()
-    //{
-    //    if (!has_attacked)
-    //    {
-    //        rb.AddRelativeForce(0, 0, distance, ForceMode.Impulse); //forward
-    //    }
-    //    else
-    //    {
-    //        rb.AddRelativeForce(0, height, distance, ForceMode.Impulse); //forward
-    //    }
-    //    has_attacked = true;
-    //}
 
     void Movement()
     {
@@ -269,11 +253,6 @@ public class BehaviourBloxor : MonoBehaviour {
         {
             rb.AddRelativeForce(0, 0, distance, ForceMode.Impulse); //forward
         }
-        //rb.AddForce(300, 0, 0); //right 
-        //rb.AddForce(-300, 0, 0); //left
-        //rb.velocity = new Vector3(0, 0, distance);
-        //rb.AddForce(0, 0, -300); //backward
-        //rb.AddForce(direction.normalized * distance);
     }
 
     void OnTriggerStay(Collider other)
@@ -299,10 +278,7 @@ public class BehaviourBloxor : MonoBehaviour {
             attacking = false;
             Vector3 dir = target.transform.position - transform.position;
             dir.y = 1;
-            //other.collider.SendMessage("TakeHit", damage, dir, 5);
             StartCoroutine(target.GetComponent<PlayerController>().TakeHit(damage, dir, 5));
-            //StartCoroutine(target.GetComponent<PlayerController>().Knockback(dir, 5));
-
         }
     }
 }

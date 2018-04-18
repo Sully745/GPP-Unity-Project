@@ -2,52 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Movement_Style
-{
-    MACHINE,
-    ORGANIC
-};
-
-public enum Movement_Type
-{
-    LOOP,
-    RESTART,
-    PING_PONG
-}
-
 public class ObjectPathFollow : MonoBehaviour
 {
-    public GameObject[] nodes;
-    public bool show_path = false;
-    bool following;
-    public List<Vector3> _path;
-    public float speed = 5;
-    public int target_node = 0;
-    public int next_node = 0;
-    public int prev_node = -1;
-    public Vector3 offset;
-    public List<GameObject> draw_path; // this
-    public float distance_to_node;
+    [Header("Movement Settings")]
     public Movement_Style movement_style;
     public Movement_Type movement_type;
-    public bool move_forwards = true;
-    public Transform platform;
-    public float delay;
-    public bool delay_bool = false;
-    public bool rotate = false;
+    public float speed = 5;
+    public float delay = 0;
     public bool rotate_with_movement = false;
-    public bool submerge;
-    float rotation_x;
-    float rotation_y;
+    public bool submerge = false;
+    public bool rotate = false;
+
+    [Header("Path")]
+    public bool show_nodes = false;
+    public GameObject[] nodes;
+    public List<Vector3> _path;
+
+    private int target_node = 0;
+    private int next_node = 0;
+    private int prev_node = -1;
+
+    [HideInInspector]
+    public Vector3 offset;
+    private bool move_forwards = true;
+    private float distance_to_node = 0.1f;
+    private float rotation_x;
+    private float rotation_y;
 
     // Use this for initialization
-
     void Start()
     {
         offset = new Vector3(0, 0, 0);
         _path = new List<Vector3>();
-        draw_path = new List<GameObject>();
-        //DrawPath();
         switch (movement_style)
         {
             case Movement_Style.ORGANIC:
@@ -60,85 +46,59 @@ public class ObjectPathFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-
     void Update()
     {
-        if (rotate_with_movement)
+        foreach (GameObject node in nodes)
         {
-            LockedRotation();
-        }
-        if(rotate)
-        {
-            rotation();
-        }
-        if (!show_path)
-        {
-            foreach (GameObject node in nodes)
-            {
-                node.GetComponent<MeshRenderer>().enabled = false;
-            }
-        }
-        
+            node.GetComponent<MeshRenderer>().enabled = show_nodes;
+        }        
     }
 
     void rotation()
     {
-        //float step = 100 * Time.deltaTime;
-        //Vector3 newDir = Vector3.RotateTowards(transform.right, _path[target_node], 100, 0.0F);
-        ////transform.rotation = Quaternion.LookRotation(newDir);
-        //transform.LookAt(_path[target_node]);
-        //transform.rotation = Quaternion.FromToRotation(Vector3.up, Vector3.forward) * transform.rotation;
+        if (rotate)
+        {
+            //float step = 100 * Time.deltaTime;
+            //Vector3 newDir = Vector3.RotateTowards(transform.right, _path[target_node], 100, 0.0F);
+            ////transform.rotation = Quaternion.LookRotation(newDir);
+            //transform.LookAt(_path[target_node]);
+            //transform.rotation = Quaternion.FromToRotation(Vector3.up, Vector3.forward) * transform.rotation;
+        }
     }
 
     void LockedRotation()
     {
-        float x = GetComponent<PlatformCoupling>().rotation.x;
-        rotation_x += x;
-        rotation_x = Mathf.Clamp(rotation_x, -5.0f, 5.0f);
+        if (rotate_with_movement && GetComponent<PlatformCoupling>().player_on)
+        {
+            float x = GetComponent<PlatformCoupling>().rotation.x;
+            rotation_x += x;
+            rotation_x = Mathf.Clamp(rotation_x, -5.0f, 5.0f);
 
-        float y = GetComponent<PlatformCoupling>().rotation.y;
-        rotation_y += y;
-        rotation_y = Mathf.Clamp(rotation_y, -5.0f, 5.0f);
+            float y = GetComponent<PlatformCoupling>().rotation.y;
+            rotation_y += y;
+            rotation_y = Mathf.Clamp(rotation_y, -5.0f, 5.0f);
+        }
+        else
+        {
+            rotation_x = Mathf.MoveTowards(rotation_x, 0, .05f);
+            rotation_y = Mathf.MoveTowards(rotation_y, 0, .05f);
+        }
 
         transform.localEulerAngles = new Vector3(-rotation_x, -rotation_y, transform.localEulerAngles.z);
     }
 
     void FixedUpdate()
     {
-        //following = GetComponent<PlayerController>().following_path;
-        //SetNode();
-        switch (movement_style)
-        {
-            case Movement_Style.MACHINE:
-                SetNode();
-                Move();
-                break;
-            case Movement_Style.ORGANIC:
-                SetNode();
-                Move();
-                break;
-        }
+        rotation();
+        LockedRotation();
+        SetNode();
+        Move(); 
     }
-
 
     private void Move()
     {
-
-        //float distance = Vector3.Distance(nodes[next_node].transform.position, transform.position);
-        //distance = Mathf.Abs(distance);
-        //target_node = next_node;
-        //Debug.Log(distance);
-        //if (distance < distance_to_node && next_node < nodes.Length - 1)
-        //{
-        //    next_node++;
-        //    prev_node = next_node - 1;
-
-        //}
-        transform.position = Vector3.MoveTowards(transform.position, _path[target_node] + offset, Time.deltaTime * speed) ;
-        //Vector3 direction = (_path[target_node] - transform.position).normalized;
-        //platform.GetComponent<Rigidbody>().MovePosition(transform.position + direction * speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _path[target_node] + offset, Time.deltaTime * speed);
     }
-
 
     private void SetNode()
     {
@@ -155,7 +115,7 @@ public class ObjectPathFollow : MonoBehaviour
             }
             if (distance <= distance_to_node && next_node == _path.Count - 1)
             {
-                EndPath();
+                StartCoroutine(EndPath());
             }
         }
         else
@@ -173,26 +133,12 @@ public class ObjectPathFollow : MonoBehaviour
 
             if (distance <= distance_to_node && prev_node == 0)
             {
-                EndPath();
-
+                StartCoroutine(EndPath());
             }
         }
     }
 
-
-    IEnumerator DelayMove(bool state)
-    {
-        if (delay_bool)
-        {
-            yield return new WaitForSeconds(delay);
-
-        }
-        move_forwards = state;
-
-    }
-
-
-    private void EndPath()
+    IEnumerator EndPath()
     {
         switch (movement_type)
         {
@@ -204,9 +150,13 @@ public class ObjectPathFollow : MonoBehaviour
                 next_node = 1;
                 break;
             case Movement_Type.PING_PONG:
-                StartCoroutine(DelayMove(!move_forwards));
+                move_forwards = !move_forwards;
                 break;
         }
+        speed = 0;
+        yield return new WaitForSeconds(delay);
+        speed = 5;
+       
     }
 
     private void DrawPathOrganic()
@@ -256,9 +206,9 @@ public class ObjectPathFollow : MonoBehaviour
         while (i < nodes.Length - 1)
         {
 
-            for (int j = 0; j <= 100; j++)
+            for (int j = 0; j <= 1; j++)
             {
-                float track = .01f * j;
+                float track = 1f * j;
                 track_pos = Vector3.Lerp(nodes[i].transform.position, nodes[i + 1].transform.position, track);
                 _path.Add(track_pos);
             }

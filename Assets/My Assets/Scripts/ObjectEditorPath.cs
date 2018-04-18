@@ -42,11 +42,11 @@ public class ObjectEditorPath : MonoBehaviour {
         //{
         //    DestroyImmediate(clone);
         //}
-        //GameObject[] clones = GameObject.FindGameObjectsWithTag("Path Clone");
-        //foreach (GameObject clone in clones)
-        //{
-        //    DestroyImmediate(clone);
-        //}
+        GameObject[] clones = GameObject.FindGameObjectsWithTag("Path Clone");
+        foreach (GameObject clone in clones)
+        {
+            DestroyImmediate(clone);
+        }
         draw_path.Clear();
 
         if (!Application.isPlaying || show_in_game)
@@ -78,11 +78,11 @@ public class ObjectEditorPath : MonoBehaviour {
         //{
         //    DestroyImmediate(clone);
         //}
-        //GameObject[] clones = GameObject.FindGameObjectsWithTag("Path Clone");
-        //foreach (GameObject clone in clones)
-        //{
-        //    DestroyImmediate(clone);
-        //}
+        GameObject[] clones = GameObject.FindGameObjectsWithTag("Path Clone");
+        foreach (GameObject clone in clones)
+        {
+            DestroyImmediate(clone);
+        }
         draw_path.Clear();
 
         if (!Application.isPlaying || show_in_game)
@@ -93,9 +93,9 @@ public class ObjectEditorPath : MonoBehaviour {
             while (i < nodes.Length - 1)
             {
 
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < 1; j++)
                 {
-                    float track = .1f * j;
+                    float track = 1f * j;
 
                     if (i + 3 <= nodes.Length - 1)
                     {

@@ -9,9 +9,9 @@ using XInputDotNetPure; // Required in C#
 public class PlayerController : MonoBehaviour {
 
     //Components
-    Rigidbody rb;
-    Animator animator;
-    CapsuleCollider capsule;
+    public Rigidbody rb;
+    public Animator animator;
+    public CapsuleCollider capsule;
     public Camera player_camera;
     public Camera target_camera;
     public ParticleSystem[] jump_ring;
@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour {
     public float SlopeAngle;
     public Image red_screen;
     public Text death_text;
+
+    public int double_jump_forward_velocity;
 
     GameObject[] enemies;
     public GameObject closest_enemy;
@@ -42,7 +44,6 @@ public class PlayerController : MonoBehaviour {
     public bool following_path = true;
     public int health = 100;
     public bool knocked = false;
-    bool stop_knocked = false;
 
     float falling_velocity = -4f;
     float move_speed = 0.0f;
@@ -402,7 +403,18 @@ public class PlayerController : MonoBehaviour {
         can_action = false;        
         animator.SetInteger("Jumping Int", 1);
         animator.SetTrigger("Jumping Trigger");
-        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        if(!double_jump_used && double_jump)
+        {
+            if(rb.velocity.x >= 0.1 || rb.velocity.z >= 0.1
+                || rb.velocity.x <= -0.1 || rb.velocity.z <= -0.1)
+            {
+                rb.AddRelativeForce(Vector3.forward * double_jump_forward_velocity, ForceMode.Impulse);
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        }
         rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
         yield return new WaitForSeconds(.4f);
         can_action = true;
@@ -460,27 +472,31 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void ActivatePowerup(PowerupType powerup_type)
+    public void ActivatePowerup(PowerupType powerup_type, float duration)
     {
         switch (powerup_type)
         {
             case PowerupType.DOUBLEJUMP:
-                StartCoroutine(DoubleJump());
+                StartCoroutine(DoubleJump(duration));
                 break;
             case PowerupType.DOUBLESPEED:
-                StartCoroutine(SpeedUp());
+                StartCoroutine(SpeedUp(duration));
                 break;
             case PowerupType.HEALTH:
                 health += 10;
+                if (health > 100)
+                {
+                    health = 100;
+                }
                 break;
         }
     }
 
-    IEnumerator DoubleJump()
+    IEnumerator DoubleJump(float duration)
     {
         double_jump = true;
         jump_ring[3].Play();
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(duration);
         jump_ring[3].Stop();
         double_jump = false;
     }
@@ -506,7 +522,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    IEnumerator SpeedUp()
+    IEnumerator SpeedUp(float duration)
     {
         speed_trail[0].Play();
 
@@ -514,7 +530,7 @@ public class PlayerController : MonoBehaviour {
         run_speed = 17.0f;
         walk_speed = 8f;
         animator.speed = 1.5f;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(duration);
         foreach (ParticleSystem effect in speed_trail)
         {
             effect.Stop();

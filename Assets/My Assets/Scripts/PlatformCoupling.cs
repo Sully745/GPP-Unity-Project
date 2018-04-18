@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlatformCoupling : MonoBehaviour
 {
-    public GameObject parent;
-    GameObject player;
-    bool player_on = false;
+    [HideInInspector]
+    public bool player_on = false;
+    [HideInInspector]
     public Vector3 rotation;
+    public GameObject parent;
+    GameObject player;    
     
     // Use this for initialization
     void Start()
@@ -21,13 +23,10 @@ public class PlatformCoupling : MonoBehaviour
         if (player_on)
         {
             rotation = transform.InverseTransformPoint(player.transform.position);
-            //rotation.x = rotation.x * 30;
-            //rotation.z = rotation.z * 30;
         }
         else
         {
             rotation = new Vector3 (0, 0, 0);
-
         }
     }
 
@@ -52,7 +51,6 @@ public class PlatformCoupling : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
         GetComponent<ObjectPathFollow>().offset = new Vector3(0, 0, 0);
-
     }
 
     void OnTriggerExit(Collider other)

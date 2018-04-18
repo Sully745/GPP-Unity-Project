@@ -9,6 +9,7 @@ public class UIBoss : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        transform.parent.gameObject.SetActive(false);
         current_health = health;
     }
 
