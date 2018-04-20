@@ -6,8 +6,8 @@ using UnityEditor.Events;
 using XInputDotNetPure; // Required in C#
 
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour
+{
     //Components
     public Rigidbody rb;
     public Animator animator;
@@ -15,12 +15,16 @@ public class PlayerController : MonoBehaviour {
     public Camera player_camera;
     public Camera target_camera;
     public ParticleSystem[] jump_ring;
-    public ParticleSystem[] speed_trail;
+    //public ParticleSystem[] speed_trail;
     public ParticleSystem goo_hit;
     public Vector3 DirectionSlope;
     public float SlopeAngle;
     public Image red_screen;
     public Text death_text;
+
+    private S_Flames flames;
+    private S_Lightning lightning;
+    private S_Smoke smoke;
 
     public int double_jump_forward_velocity;
 
@@ -79,10 +83,15 @@ public class PlayerController : MonoBehaviour {
     {
         death_text.enabled = false;
 
-        foreach (ParticleSystem effect in speed_trail)
-        {
-            effect.Stop();
-        }
+        flames = GetComponent<S_Flames>();
+        lightning = GetComponent<S_Lightning>();
+        smoke = GetComponent<S_Smoke>();
+
+        //foreach (ParticleSystem effect in speed_trail)
+        //{
+        //    effect.Stop();
+        //}
+
         foreach (ParticleSystem effect in jump_ring)
         {
             effect.Stop();
@@ -128,7 +137,7 @@ public class PlayerController : MonoBehaviour {
         Inputs();
         IsGrounded();
         Gravity();
-        SpeedUpParticle();
+        //SpeedUpParticle();
 
         animator.SetInteger("health", health);
     }
@@ -379,7 +388,9 @@ public class PlayerController : MonoBehaviour {
         {
             StartCoroutine(PlayerJump());
             double_jump_used = true;
-            DoubleJumpParticle();
+
+            smoke.SmokePlay(2.0f);
+            //DoubleJumpParticle();
         }
         else
         {
@@ -476,78 +487,88 @@ public class PlayerController : MonoBehaviour {
     {
         switch (powerup_type)
         {
-            case PowerupType.DOUBLEJUMP:
-                StartCoroutine(DoubleJump(duration));
-                break;
-            case PowerupType.DOUBLESPEED:
-                StartCoroutine(SpeedUp(duration));
-                break;
-            case PowerupType.HEALTH:
-                health += 10;
-                if (health > 100)
-                {
-                    health = 100;
-                }
-                break;
+        case PowerupType.DOUBLEJUMP:
+        {
+            lightning.LightningPlay(duration);
+            StartCoroutine(DoubleJump(duration));
+            break;
+        }
+        case PowerupType.DOUBLESPEED:
+        {
+            flames.FlamePlay(duration);
+            StartCoroutine(SpeedUp(duration));
+            break;
+        }
+        case PowerupType.HEALTH:
+        {
+            health += 10;
+            if (health > 100)
+            {
+                health = 100;
+            }
+            break;
+        }
         }
     }
 
     IEnumerator DoubleJump(float duration)
     {
         double_jump = true;
-        jump_ring[3].Play();
+        //jump_ring[3].Play();
         yield return new WaitForSeconds(duration);
-        jump_ring[3].Stop();
+        //jump_ring[3].Stop();
         double_jump = false;
     }
 
 
-    void SpeedUpParticle()
-    {
-        if (speed_up == true)
-        {
-            if (input_run > 0.8f && !speed_trail[0].isPlaying)
-            {
-                speed_trail[0].Play();
-            }
-            else if (input_run < 0.8f && speed_trail[0].isPlaying)
-            {
-                speed_trail[0].Stop();
-            }
+    //void SpeedUpParticle()
+    //{
+    //    if (speed_up == true)
+    //    {
+    //        if (input_run > 0.8f && !speed_trail[0].isPlaying)
+    //        {
+    //            speed_trail[0].Play();
+    //        }
+    //        else if (input_run < 0.8f && speed_trail[0].isPlaying)
+    //        {
+    //            speed_trail[0].Stop();
+    //        }
 
-            if (!speed_trail[1].isPlaying)
-            {
-                speed_trail[1].Play();
-            }
-        }
-    }
+    //        if (!speed_trail[1].isPlaying)
+    //        {
+    //            speed_trail[1].Play();
+    //        }
+    //    }
+    //}
 
     IEnumerator SpeedUp(float duration)
     {
-        speed_trail[0].Play();
+        //speed_trail[2].Play();
 
         speed_up = true;
         run_speed = 17.0f;
         walk_speed = 8f;
         animator.speed = 1.5f;
         yield return new WaitForSeconds(duration);
-        foreach (ParticleSystem effect in speed_trail)
-        {
-            effect.Stop();
-        }
+
+        //foreach (ParticleSystem effect in speed_trail)
+        //{
+        //    effect.Stop();
+        //}
+
         animator.speed = 1;
         run_speed = 10.0f;
         walk_speed = 5f;
         speed_up = false;
     }
 
-    void DoubleJumpParticle()
-    {
-        foreach(ParticleSystem effect in jump_ring)
-        {
-            effect.Play();
-        }
-    }
+    //void DoubleJumpParticle()
+    //{
+    //    foreach(ParticleSystem effect in jump_ring)
+    //    {
+    //        effect.Play();
+    //    }
+    //}
 
     private void OnParticleCollision()
     {

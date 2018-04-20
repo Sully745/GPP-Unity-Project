@@ -23,7 +23,7 @@ public class JumpBoost : MonoBehaviour
         {
             //Player.GetComponent<PlayerController>().double_jump = true;
             type = PowerupType.DOUBLEJUMP;
-            Player.GetComponent<PlayerController>().ActivatePowerup(type);
+            Player.GetComponent<PlayerController>().ActivatePowerup(type, 10.0f);
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Wait());

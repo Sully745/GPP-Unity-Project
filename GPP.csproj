@@ -81,6 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_Flames.cs" />
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_Lightning.cs" />
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_Smoke.cs" />
     <Compile Include="Assets\My Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\My Assets\Scripts\BehaviourBloxor.cs" />
     <Compile Include="Assets\My Assets\Scripts\CameraFollow.cs" />
