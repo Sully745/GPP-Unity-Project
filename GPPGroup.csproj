@@ -135,6 +135,8 @@
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerNextLevel.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerPreviousLevel.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Luke\S_Flames.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Luke\S_Lightning.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Luke\S_Smoke.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Bezier.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierControlPointMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierSpline.cs" />
