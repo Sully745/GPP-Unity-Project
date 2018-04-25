@@ -8,13 +8,14 @@ using XInputDotNetPure; // Required in C#
 
 public class PlayerController : MonoBehaviour
 {
+    #region VARAIBLES
     //Components
     public Rigidbody rb;
     public Animator animator;
     public CapsuleCollider capsule;
     public Camera player_camera;
     public Camera target_camera;
-    public ParticleSystem[] jump_ring;
+    //public ParticleSystem[] jump_ring;
     //public ParticleSystem[] speed_trail;
     public ParticleSystem goo_hit;
     public Vector3 DirectionSlope;
@@ -43,8 +44,8 @@ public class PlayerController : MonoBehaviour
     bool is_falling = false;
     bool jumping = false;
     bool start_fall = false;
-    bool can_move = true;
-    bool can_action = true;
+    public bool can_move = true;
+    public bool can_action = true;
     public bool following_path = true;
     public int health = 100;
     public bool knocked = false;
@@ -71,13 +72,14 @@ public class PlayerController : MonoBehaviour
 
     bool input_attack_l_kick;
     bool input_attack_r_kick;
-
-
+    
     //xinput 
     bool playerIndexSet = false;
     PlayerIndex playerIndex;
     GamePadState state;
     GamePadState prevState;
+#endregion VARIABLES
+
     // Use this for initialization
     void Start ()
     {
@@ -91,11 +93,11 @@ public class PlayerController : MonoBehaviour
         //{
         //    effect.Stop();
         //}
+        //foreach (ParticleSystem effect in jump_ring)
+        //{
+        //    effect.Stop();
+        //}
 
-        foreach (ParticleSystem effect in jump_ring)
-        {
-            effect.Stop();
-        }
         //get components 
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
