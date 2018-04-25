@@ -482,10 +482,12 @@ public class PlayerController : MonoBehaviour {
         switch (powerup_type)
         {
             case PowerupType.DOUBLEJUMP:
-                StartCoroutine(DoubleJump(duration));
+                StopCoroutine("DoubleJump");
+                StartCoroutine("DoubleJump", duration);
                 break;
             case PowerupType.DOUBLESPEED:
-                StartCoroutine(SpeedUp(duration));
+                StopCoroutine("SpeedUp");
+                StartCoroutine("SpeedUp", duration);
                 break;
             case PowerupType.HEALTH:
                 health += 10;

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/New Assets/SCENES/GPP OVERWORLD.unity
+- path: Assets/New Assets/SCENES/GPP LEVEL 2.unity
   isLoaded: 1
   isActive: 1

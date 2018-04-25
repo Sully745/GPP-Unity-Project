@@ -33,7 +33,7 @@ public class SpeedBoost : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;
     }

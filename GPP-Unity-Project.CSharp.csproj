@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Assets\My Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\My Assets\Scripts\BehaviourBloxor.cs" />
+    <Compile Include="Assets\My Assets\Scripts\BreakablePlatform.cs" />
     <Compile Include="Assets\My Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\My Assets\Scripts\DestroyParticleSystem.cs" />
     <Compile Include="Assets\My Assets\Scripts\DoorAnimation.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\My Assets\Scripts\ObjectPathFollow.cs" />
     <Compile Include="Assets\My Assets\Scripts\PathFollow.cs" />
     <Compile Include="Assets\My Assets\Scripts\PatrolArea.cs" />
+    <Compile Include="Assets\My Assets\Scripts\PlatformControllerLevel2.cs" />
     <Compile Include="Assets\My Assets\Scripts\PlatformCoupling.cs" />
     <Compile Include="Assets\My Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\My Assets\Scripts\RotateCamera.cs" />
