@@ -14,7 +14,7 @@ public class DoorControllerTimed : MonoBehaviour
 
     private Vector3 _door_origin_position;
 
-    public float timer = 5.0f;
+    public float timer;
 
 
     // Use this for initialization

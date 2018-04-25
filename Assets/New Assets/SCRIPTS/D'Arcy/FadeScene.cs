@@ -12,6 +12,21 @@ public class FadeScene : MonoBehaviour
     private float alpha = 1.0f;
     private int fadeDir = -1;
 
+    public int HP = 0;
+    public bool level1_completed = false;
+    public bool level2_completed = false;
+    public GameObject[] spawn_index;
+
+    private static bool created = false;
+    private void Awake()
+    {
+        if(!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+    }
+
     private void OnGUI()
     {
         alpha += fadeDir * fadeSpeed * Time.deltaTime;
