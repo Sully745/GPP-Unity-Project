@@ -1,0 +1,12 @@
+﻿<Properties StartupItem="GPP-Unity-Project-master.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\New Assets\SCRIPTS\Patrick\JumpBoost.cs">
+    <Files>
+      <File FileName="Assets\New Assets\SCRIPTS\Patrick\JumpBoost.cs" Line="26" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
