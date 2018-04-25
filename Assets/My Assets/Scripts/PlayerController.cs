@@ -6,15 +6,15 @@ using UnityEditor.Events;
 using XInputDotNetPure; // Required in C#
 
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
+
     //Components
     public Rigidbody rb;
     public Animator animator;
     public CapsuleCollider capsule;
     public Camera player_camera;
     public Camera target_camera;
-    public ParticleSystem[] jump_ring;
+    //public ParticleSystem[] jump_ring;
     //public ParticleSystem[] speed_trail;
     public ParticleSystem goo_hit;
     public Vector3 DirectionSlope;
@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
     bool is_falling = false;
     bool jumping = false;
     bool start_fall = false;
-    bool can_move = true;
-    bool can_action = true;
+    public bool can_move = true;
+    public bool can_action = true;
     public bool following_path = true;
     public int health = 100;
     public bool knocked = false;
@@ -83,23 +83,22 @@ public class PlayerController : MonoBehaviour
     {
         death_text.enabled = false;
 
-        flames = GetComponent<S_Flames>();
-        lightning = GetComponent<S_Lightning>();
-        smoke = GetComponent<S_Smoke>();
-
         //foreach (ParticleSystem effect in speed_trail)
         //{
         //    effect.Stop();
         //}
-
-        foreach (ParticleSystem effect in jump_ring)
-        {
-            effect.Stop();
-        }
+        //foreach (ParticleSystem effect in jump_ring)
+        //{
+        //    effect.Stop();
+        //}
         //get components 
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         capsule = GetComponent<CapsuleCollider>();
+
+        flames = GetComponent<S_Flames>();
+        lightning = GetComponent<S_Lightning>();
+        smoke = GetComponent<S_Smoke>();
 
         target_camera.enabled = false;
         player_camera.enabled = true;
@@ -388,8 +387,8 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(PlayerJump());
             double_jump_used = true;
-
             smoke.SmokePlay(2.0f);
+            
             //DoubleJumpParticle();
         }
         else
@@ -426,7 +425,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
-        rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
+        rb.velocity = new Vector3(0, 0, 0);
+
+        Vector3 new_jump = input_vector * 100 + new Vector3(0, jump_force, 0);
+        //rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
+        rb.AddForce(new_jump, ForceMode.Impulse);
+
         yield return new WaitForSeconds(.4f);
         can_action = true;
         jumping = false;        
@@ -487,27 +491,23 @@ public class PlayerController : MonoBehaviour
     {
         switch (powerup_type)
         {
-        case PowerupType.DOUBLEJUMP:
-        {
-            lightning.LightningPlay(duration);
-            StartCoroutine(DoubleJump(duration));
-            break;
-        }
-        case PowerupType.DOUBLESPEED:
-        {
-            flames.FlamePlay(duration);
-            StartCoroutine(SpeedUp(duration));
-            break;
-        }
-        case PowerupType.HEALTH:
-        {
-            health += 10;
-            if (health > 100)
-            {
-                health = 100;
-            }
-            break;
-        }
+            case PowerupType.DOUBLEJUMP:
+                lightning.LightningPlay(duration);
+                StopCoroutine("DoubleJump");
+                StartCoroutine("DoubleJump", duration);
+                break;
+            case PowerupType.DOUBLESPEED:
+                flames.FlamePlay(duration);
+                StopCoroutine("SpeedUp");
+                StartCoroutine("SpeedUp", duration);
+                break;
+            case PowerupType.HEALTH:
+                health += 10;
+                if (health > 100)
+                {
+                    health = 100;
+                }
+                break;
         }
     }
 
@@ -543,19 +543,17 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SpeedUp(float duration)
     {
-        //speed_trail[2].Play();
+        //speed_trail[0].Play();
 
         speed_up = true;
         run_speed = 17.0f;
         walk_speed = 8f;
         animator.speed = 1.5f;
         yield return new WaitForSeconds(duration);
-
         //foreach (ParticleSystem effect in speed_trail)
         //{
         //    effect.Stop();
         //}
-
         animator.speed = 1;
         run_speed = 10.0f;
         walk_speed = 5f;
