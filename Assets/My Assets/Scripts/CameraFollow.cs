@@ -26,6 +26,7 @@ public class CameraFollow : MonoBehaviour {
     public bool follow_path = false;
 
     public Vector3 offset;
+    //level 2 in door offset = 0, 3.75, 4
     float rotate;
     public float rotateSpeed;
     public Vector3 h_offset;

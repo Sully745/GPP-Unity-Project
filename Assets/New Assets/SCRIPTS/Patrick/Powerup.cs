@@ -42,7 +42,7 @@ public class Powerup : MonoBehaviour {
         if (other.tag == "Player" && !other.isTrigger)
         {
             PlayerController player_controller = other.GetComponent<PlayerController>();
-            player_controller.ActivatePowerup(this_powerup);
+            player_controller.ActivatePowerup(this_powerup, 10);
             Destroy(gameObject);
         }
     }    

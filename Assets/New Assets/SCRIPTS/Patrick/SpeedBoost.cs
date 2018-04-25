@@ -24,7 +24,7 @@ public class SpeedBoost : MonoBehaviour
         {
             //Player.GetComponent<PlayerController>().speed_up = true;
             type = PowerupType.DOUBLESPEED;
-            Player.GetComponent<PlayerController>().ActivatePowerup(type);
+            Player.GetComponent<PlayerController>().ActivatePowerup(type, 10);
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Wait());
