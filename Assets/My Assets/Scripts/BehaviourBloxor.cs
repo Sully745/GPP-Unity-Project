@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CurrentState
 {
@@ -66,7 +67,6 @@ public class BehaviourBloxor : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         InvokeRepeating("Direction", 0, repeat_rate);
         prev_state = current_state;
-        boss_bar.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -76,10 +76,16 @@ public class BehaviourBloxor : MonoBehaviour {
         {
             target = GameObject.FindGameObjectWithTag("Player");
         }
-        if (!boss_bar)
+
+        if (is_boss && !boss_bar)
         {
-            boss_bar = GameObject.FindGameObjectWithTag("BossBar");
+            boss_bar = GameObject.Find("BossHealthBar");
+            //foreach (Transform child in boss_bar.transform)
+            //{
+            //    child.gameObject.SetActive(true);
+            //}
         }
+
         distance_to_player = Vector3.Distance(transform.position, target.transform.position);
         //Debug.Log(distance_to_player);
         Die();
@@ -104,15 +110,15 @@ public class BehaviourBloxor : MonoBehaviour {
         {
             current_state = CurrentState.ATTACKING;            
         }
-        
-        if (current_state == CurrentState.ATTACKING && boss_bar.GetComponentInChildren<UIBoss>().health > 0 && is_boss)
-        {
-            boss_bar.SetActive(true);            
-        }
-        else
-        {
-            boss_bar.SetActive(false);
-        }        
+
+        //if (current_state == CurrentState.ATTACKING && boss_bar.GetComponentInChildren<UIBoss>().health > 0 && is_boss)
+        //{
+        //    boss_bar.SetActive(true);
+        //}
+        //else
+        //{
+        //    boss_bar.SetActive(false);
+        //}
     }
 
     void IsGrounded()
