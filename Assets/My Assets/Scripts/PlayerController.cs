@@ -425,11 +425,16 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
-        rb.velocity = new Vector3(0, 0, 0);
-
-        Vector3 new_jump = input_vector * 100 + new Vector3(0, jump_force, 0);
-        //rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
-        rb.AddForce(new_jump, ForceMode.Impulse);
+        if (grounded)
+        {
+            rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+            Vector3 new_jump = input_vector * 100 + new Vector3(0, jump_force, 0);
+            rb.AddForce(new_jump, ForceMode.Impulse);
+        }
 
         yield return new WaitForSeconds(.4f);
         can_action = true;
