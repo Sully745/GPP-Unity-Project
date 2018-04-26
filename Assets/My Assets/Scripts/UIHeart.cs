@@ -12,7 +12,6 @@ public class UIHeart : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         current_health = player.GetComponent<PlayerController>().health;
     }
 

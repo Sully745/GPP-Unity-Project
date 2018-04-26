@@ -79,20 +79,19 @@ public class PlayerController : MonoBehaviour {
     GamePadState state;
     GamePadState prevState;
     // Use this for initialization
-
-    private static bool created = false;
-    private void Awake()
-    {
-        if (!created)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            created = true;
-        }
-    }
     void Start ()
     {
         death_text.enabled = false;
 
+        //foreach (ParticleSystem effect in speed_trail)
+        //{
+        //    effect.Stop();
+        //}
+        //foreach (ParticleSystem effect in jump_ring)
+        //{
+        //    effect.Stop();
+        //}
+        //get components 
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         capsule = GetComponent<CapsuleCollider>();
@@ -376,7 +375,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Jumping()
-    {        
+    {
         if (IsGrounded())
         {
             if (Input.GetButtonDown("Jump") && !jumping && can_action && !is_falling)
@@ -389,7 +388,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(PlayerJump());
             double_jump_used = true;
             smoke.SmokePlay(2.0f);
-            
+
             //DoubleJumpParticle();
         }
         else
@@ -403,20 +402,20 @@ public class PlayerController : MonoBehaviour {
                         animator.SetTrigger("Jumping Trigger");
                         start_fall = true;
                     }
-                }                
-            }           
+                }
+            }
         }
     }
 
     public IEnumerator PlayerJump()
     {
         jumping = true;
-        can_action = false;        
+        can_action = false;
         animator.SetInteger("Jumping Int", 1);
         animator.SetTrigger("Jumping Trigger");
-        if(!double_jump_used && double_jump)
+        if (!double_jump_used && double_jump)
         {
-            if(rb.velocity.x >= 0.1 || rb.velocity.z >= 0.1
+            if (rb.velocity.x >= 0.1 || rb.velocity.z >= 0.1
                 || rb.velocity.x <= -0.1 || rb.velocity.z <= -0.1)
             {
                 rb.AddRelativeForce(Vector3.forward * double_jump_forward_velocity, ForceMode.Impulse);
@@ -426,21 +425,26 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
-        rb.velocity = new Vector3(0, 0, 0);
-
-        Vector3 new_jump = input_vector * 100 + new Vector3(0, jump_force, 0);
-        //rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
-        rb.AddForce(new_jump, ForceMode.Impulse);
+        if (grounded)
+        {
+            rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+            Vector3 new_jump = input_vector * 100 + new Vector3(0, jump_force, 0);
+            rb.AddForce(new_jump, ForceMode.Impulse);
+        }
 
         yield return new WaitForSeconds(.4f);
         can_action = true;
-        jumping = false;        
+        jumping = false;
     }
 
     bool IsGrounded()
     {
         if (Physics.CheckCapsule(capsule.bounds.center,
-            new Vector3(capsule.bounds.center.x, capsule.bounds.min.y -1f, capsule.bounds.center.z),
+            new Vector3(capsule.bounds.center.x, capsule.bounds.min.y - 1f, capsule.bounds.center.z),
             .5f, 1, QueryTriggerInteraction.Ignore) && SlopeAngle < 45)
         {
             start_fall = false;
@@ -454,8 +458,9 @@ public class PlayerController : MonoBehaviour {
             }
             grounded = true;
             return true;
+
         }
-        else if (dist_to_ground < 3 && SlopeAngle <= 45)
+        else if (dist_to_ground < 1.5 && SlopeAngle <= 45)
         {
             start_fall = false;
             if (!jumping)
@@ -464,6 +469,8 @@ public class PlayerController : MonoBehaviour {
             }
             grounded = true;
             return true;
+            //return false;
+
         }
         else
         {
