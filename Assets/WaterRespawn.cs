@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class WaterRespawn : MonoBehaviour
 {
-    public GameObject Player;
+    private GameObject Player;
     public GameObject PPos;
     // Use this for initialization
     void Start()
     {
-
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

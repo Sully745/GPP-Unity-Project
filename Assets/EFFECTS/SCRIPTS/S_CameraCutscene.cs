@@ -20,6 +20,8 @@ public class S_CameraCutscene : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        start = GameObject.FindGameObjectWithTag("MainCamera").transform;
         pc = player.GetComponent<PlayerController>();
         pc.can_action = false;
         pc.can_move = false;

@@ -17,14 +17,36 @@ public class FadeScene : MonoBehaviour
     public bool level2_completed = false;
     public GameObject[] spawn_index;
 
+    public GameObject main_camera;
+    public GameObject player;
+    public GameObject UI;
+
+    private bool Ct1;
+
     private static bool created = false;
     private void Awake()
     {
-        if(!created)
+        if (!created)
         {
+            player.SetActive(true);
+            main_camera.SetActive(true);
+            UI.SetActive(true);
+
             DontDestroyOnLoad(this.gameObject);
             created = true;
         }
+    }
+
+    private void Update()
+    {
+        //if(index_val == 1)
+        //{
+        //    if (!Ct1)
+        //    {
+        //        player.GetComponent<S_CameraCutscene>().enabled = true;
+        //        Ct1 = true;
+        //    }
+        //}
     }
 
     private void OnGUI()

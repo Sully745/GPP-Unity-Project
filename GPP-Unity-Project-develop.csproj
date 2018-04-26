@@ -86,7 +86,7 @@
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Flames.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Lightning.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Smoke.cs" />
-    <Compile Include="Assets\LvL2CamChange.cs" />
+    <Compile Include="Assets\GMCreation.cs" />
     <Compile Include="Assets\My Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\My Assets\Scripts\BehaviourBloxor.cs" />
     <Compile Include="Assets\My Assets\Scripts\BreakablePlatform.cs" />
@@ -170,6 +170,7 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalker.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalkerMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\UpgradeController.cs" />
+    <Compile Include="Assets\PersistantUI.cs" />
     <Compile Include="Assets\WaterRespawn.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>

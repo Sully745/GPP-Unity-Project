@@ -79,19 +79,20 @@ public class PlayerController : MonoBehaviour {
     GamePadState state;
     GamePadState prevState;
     // Use this for initialization
+
+    public static bool created = false;
+    private void Awake()
+    {
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+    }
     void Start ()
     {
         death_text.enabled = false;
 
-        //foreach (ParticleSystem effect in speed_trail)
-        //{
-        //    effect.Stop();
-        //}
-        //foreach (ParticleSystem effect in jump_ring)
-        //{
-        //    effect.Stop();
-        //}
-        //get components 
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         capsule = GetComponent<CapsuleCollider>();

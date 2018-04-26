@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TriggerLevel : MonoBehaviour
 {
-    public GameObject GM;
+    private GameObject GM;
     public int level;
     public int spawn_index = 0;
     private GameObject player;
@@ -13,6 +13,11 @@ public class TriggerLevel : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        GM = GameObject.FindGameObjectWithTag("GameManager");
+    }
+
+    private void Update()
+    {
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +32,7 @@ public class TriggerLevel : MonoBehaviour
     {
         float fadeTime = GM.GetComponent<FadeScene>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime * 5);
-        player.transform.position = GM.GetComponent<FadeScene>().spawn_index[spawn_index].transform.position;
         SceneManager.LoadScene(level, LoadSceneMode.Single);
+        player.transform.position = GM.GetComponent<FadeScene>().spawn_index[spawn_index].transform.position;
     }
 }
