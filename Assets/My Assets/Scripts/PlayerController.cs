@@ -458,8 +458,9 @@ public class PlayerController : MonoBehaviour {
             }
             grounded = true;
             return true;
+
         }
-        else if (dist_to_ground < 3 && SlopeAngle <= 45)
+        else if (dist_to_ground < 1.5 && SlopeAngle <= 45)
         {
             start_fall = false;
             if (!jumping)
@@ -468,6 +469,8 @@ public class PlayerController : MonoBehaviour {
             }
             grounded = true;
             return true;
+            //return false;
+
         }
         else
         {
