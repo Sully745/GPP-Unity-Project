@@ -79,6 +79,16 @@ public class PlayerController : MonoBehaviour {
     GamePadState state;
     GamePadState prevState;
     // Use this for initialization
+
+    private static bool created = false;
+    private void Awake()
+    {
+        if (!created)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+    }
     void Start ()
     {
         death_text.enabled = false;

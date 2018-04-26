@@ -158,6 +158,7 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpTimer.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpUpgrade.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Line.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Patrick\LvL2CamChange.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\MovingPlatforms.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\PlatformCollision.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Powerup.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Assets\TriggerBridge.cs" />
     <Compile Include="Assets\WaterRespawn.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
+    <Compile Include="Assets\cutscene_l1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Shaders\BlendModesOverlay.shader" />
