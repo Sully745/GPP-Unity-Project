@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -107,8 +107,8 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 713, y: 492}
-  m_MaxSize: {x: 18008, y: 14042}
+  m_MinSize: {x: 711, y: 492}
+  m_MaxSize: {x: 18006, y: 14042}
   vertical: 0
   controlID: 11
 --- !u!114 &6
@@ -345,7 +345,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: e0fbffffe2fbffffe4fbffffe6fbffff00000000
+    m_ExpandedIDs: c083fbffee86fbff7661fdff129afdffe0fbffffe2fbffffe4fbffffe6fbfffff4ffffff000000007efa0000906d01006ab10200acb6020038b403000ab90300dafb0400b80f0500b2ae0a003c230e00cce60e00def00e00aef60e00d2ae0f00e4b80f00b4be0f00b2551000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -398,14 +398,14 @@ MonoBehaviour:
     width: 1028
     height: 650
   m_SceneLighting: 0
-  lastFramingTime: 10891.683929349967
+  lastFramingTime: 4085.2956384124022
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 37.625416, y: -4.681948, z: 13.49609}
+    m_Target: {x: -7.8200474, y: 1.2621676, z: -26.24908}
     speed: 2
-    m_Value: {x: 37.625416, y: -4.681948, z: 13.49609}
+    m_Value: {x: -7.8200474, y: 1.2621676, z: -26.24908}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -428,13 +428,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.036933485, y: -0.9537629, z: 0.13160358, w: -0.26768056}
+    m_Target: {x: 0.3130957, y: -0.6390934, z: 0.3199254, w: 0.6254427}
     speed: 2
-    m_Value: {x: 0.036933485, y: 0.95376295, z: -0.13160358, w: 0.26768056}
+    m_Value: {x: 0.3130957, y: -0.6390934, z: 0.3199254, w: 0.6254427}
   m_Size:
-    m_Target: 13.60548
+    m_Target: 12.09112
     speed: 2
-    m_Value: 13.60548
+    m_Value: 12.09112
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -574,12 +574,13 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders: []
+    m_Folders:
+    - Assets/New Assets/PREFABS
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: E:\GPP-Unity-Project-develop
+  m_LastProjectPath: \\nstu-nas01.uwe.ac.uk\users1$\d4-sullivan\Windows\Desktop\GPP-Unity-Project
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 169}
@@ -610,10 +611,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 567}
+    scrollPos: {x: 0, y: 679}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000078260000ce26000070270000e627000040290000fa290000562a0000622a0000722a00008a2a0000282c0000b82c0000ee2c0000142d00001a2d0000482e0000da2e0000405300004253000044530000
+    m_ExpandedIDs: 0000000078260000ce260000702700005c290000fa290000562a0000622a00008a2a0000282c0000602c0000b82c0000ee2c0000142d00001a2d0000482e0000da2e0000405300004253000044530000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

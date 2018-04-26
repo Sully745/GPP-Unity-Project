@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
     GamePadState prevState;
     // Use this for initialization
 
-    public static bool created = false;
+    private static bool created = false;
     private void Awake()
     {
         if (!created)

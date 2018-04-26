@@ -6,7 +6,8 @@ public class ExplodeDoor : MonoBehaviour
 {
     public GameObject splinters;
     public GameObject door;
-    public GameObject explosion_pos;
+    public GameObject exp;
+    private TriggerBridge tb;
 
     private void OnTriggerEnter(Collider col)
     {
@@ -14,6 +15,8 @@ public class ExplodeDoor : MonoBehaviour
         {
             door.SetActive(false);
             splinters.SetActive(true);
+            exp.SetActive(true);
+            tb.triggered_door = true;
         }
     }
 }

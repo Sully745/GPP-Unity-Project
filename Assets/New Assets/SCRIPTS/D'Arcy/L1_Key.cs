@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class L1_Key : MonoBehaviour
 {
-    public GameObject GM;
+    private GameObject GM;
+
+    void Start()
+    {
+        GM = GameObject.FindGameObjectWithTag("GameManager");
+    }
 
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
         {
-            GM.GetComponent<FadeScene>().level1_completed = true;
+            GM.GetComponent<FadeScene>().l1 = true;
         }
     }
 }

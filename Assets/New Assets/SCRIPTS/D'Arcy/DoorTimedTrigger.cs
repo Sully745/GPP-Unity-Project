@@ -10,6 +10,7 @@ public class DoorTimedTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            _controller.GetComponent<DoorControllerTimed>().StopAllCoroutines();
             _controller.GetComponent<DoorControllerTimed>()._door_open = true;
         }
     }
