@@ -22,6 +22,7 @@ public class SpeedBoost : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Player = collision.gameObject;
             //Player.GetComponent<PlayerController>().speed_up = true;
             type = PowerupType.DOUBLESPEED;
 			Player.GetComponent<PlayerController> ().ActivatePowerup (type, 5f);

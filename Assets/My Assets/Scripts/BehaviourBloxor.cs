@@ -72,6 +72,14 @@ public class BehaviourBloxor : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+        if (!boss_bar)
+        {
+            boss_bar = GameObject.FindGameObjectWithTag("BossBar");
+        }
         distance_to_player = Vector3.Distance(transform.position, target.transform.position);
         //Debug.Log(distance_to_player);
         Die();
@@ -92,7 +100,7 @@ public class BehaviourBloxor : MonoBehaviour {
                 current_state = prev_state;
             }
         }
-        if (distance_to_player < 20 && player_health > 0)
+        if (distance_to_player < 40 && player_health > 0)
         {
             current_state = CurrentState.ATTACKING;            
         }
