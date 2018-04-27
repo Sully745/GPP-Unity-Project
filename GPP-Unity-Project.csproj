@@ -81,14 +81,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DoCt1Once.cs" />
+    <Compile Include="Assets\Cutscene_l2.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_CameraCutscene.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_ColourGradient.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Flames.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Lightning.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Smoke.cs" />
-    <Compile Include="Assets\GMCreation.cs" />
-    <Compile Include="Assets\MoveToPos.cs" />
     <Compile Include="Assets\My Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\My Assets\Scripts\BehaviourBloxor.cs" />
     <Compile Include="Assets\My Assets\Scripts\BreakablePlatform.cs" />
@@ -128,6 +126,7 @@
     <Compile Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Scripts\Triangles.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Connor\PressurePlatform.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoCt1Once.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorAutoTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorButtonTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorCollectableTrigger.cs" />
@@ -143,13 +142,18 @@
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\ExplodeDoor.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\ExplosionForce.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\FadeScene.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\GMCreation.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\KeyPickUp.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\L1_Key.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\L2_Key.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\MoveToPos.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PersistantUI.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PressurePlatformTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PressurePlatfromController.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerBridge.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerLevel.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerPreviousLevel.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\cutscene_l1.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Bezier.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierControlPointMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierSpline.cs" />
@@ -173,11 +177,8 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalker.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalkerMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\UpgradeController.cs" />
-    <Compile Include="Assets\PersistantUI.cs" />
-    <Compile Include="Assets\TriggerBridge.cs" />
     <Compile Include="Assets\WaterRespawn.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
-    <Compile Include="Assets\cutscene_l1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Shaders\BlendModesOverlay.shader" />

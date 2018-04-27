@@ -1,18 +1,4 @@
 sceneSetups:
 - path: Assets/New Assets/SCENES/GPP OVERWORLD.unity
-<<<<<<< HEAD
-  isLoaded: 0
-  isActive: 0
-- path: Assets/New Assets/SCENES/GPP LEVEL 1.unity
   isLoaded: 1
   isActive: 1
-- path: Assets/New Assets/SCENES/GPP LEVEL 2.unity
-  isLoaded: 0
-  isActive: 0
-- path: Assets/New Assets/SCENES/GPP LEVEL 3.unity
-  isLoaded: 0
-  isActive: 0
-=======
-  isLoaded: 1
-  isActive: 1
->>>>>>> Scene-transistions-&-Bug-Fixes
