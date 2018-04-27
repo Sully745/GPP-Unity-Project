@@ -12,6 +12,43 @@ public class FadeScene : MonoBehaviour
     private float alpha = 1.0f;
     private int fadeDir = -1;
 
+    public int HP = 0;
+    public static bool level1_completed = false;
+    public static bool level2_completed = false;
+    public bool l1;
+    public bool l2;
+    public GameObject[] spawn_index;
+
+    public GameObject main_camera;
+    public GameObject player;
+    public GameObject UI;
+
+    private static bool created = false;
+    private void Awake()
+    {
+        if (!created)
+        {
+            player.SetActive(true);
+            main_camera.SetActive(true);
+            UI.SetActive(true);
+
+            DontDestroyOnLoad(this.gameObject);
+            created = true;
+        }
+    }
+
+    private void Update()
+    {
+        if(l1)
+        {
+            level1_completed = true;
+        }
+        if (l2)
+        {
+            level2_completed = true;
+        }
+    }
+
     private void OnGUI()
     {
         alpha += fadeDir * fadeSpeed * Time.deltaTime;

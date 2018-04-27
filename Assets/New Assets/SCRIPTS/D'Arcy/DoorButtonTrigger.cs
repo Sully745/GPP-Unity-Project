@@ -5,10 +5,16 @@ using UnityEngine;
 public class DoorButtonTrigger : MonoBehaviour
 {
     public GameObject _controller;
+    private GameObject player;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if(other.tag == "Player")
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Player" && player.GetComponent<PlayerController>().interact)
         {
             _controller.GetComponent<DoorControllerButton>()._door_open = true;
         }
