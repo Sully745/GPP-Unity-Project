@@ -23,6 +23,7 @@ public class JumpBoost : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Player = collision.gameObject;
             //Player.GetComponent<PlayerController>().double_jump = true;
             type = PowerupType.DOUBLEJUMP;
             Player.GetComponent<PlayerController>().ActivatePowerup(type, duration);

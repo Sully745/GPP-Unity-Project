@@ -110,7 +110,11 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 55
+=======
+  controlID: 53
+>>>>>>> Scene-transistions-&-Bug-Fixes
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -159,7 +163,11 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 56
+=======
+  controlID: 54
+>>>>>>> Scene-transistions-&-Bug-Fixes
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -343,9 +351,15 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: ccadf9ffb610feffe6fbfffff4ffffff00000000984100002e5e0100e26001001e590300a6850300c08f030062900300
+=======
+    m_SelectedIDs: ee330000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 5845fcff9085fcffdc98fcff80b5fcffe277ffffb289ffff02ccffff2ef2ffff32fbffff00000000
+>>>>>>> Scene-transistions-&-Bug-Fixes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -365,7 +379,10 @@ MonoBehaviour:
     m_SearchString: 
   m_ExpandedScenes:
   - GPP OVERWORLD
+<<<<<<< HEAD
   - GPP LEVEL 1
+=======
+>>>>>>> Scene-transistions-&-Bug-Fixes
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -396,14 +413,24 @@ MonoBehaviour:
     width: 1028
     height: 650
   m_SceneLighting: 0
+<<<<<<< HEAD
   lastFramingTime: 4201.357206054169
+=======
+  lastFramingTime: 614.6137476550156
+>>>>>>> Scene-transistions-&-Bug-Fixes
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 18.831306, y: 2.8190308, z: -42.636852}
     speed: 2
     m_Value: {x: 18.831306, y: 2.8190308, z: -42.636852}
+=======
+    m_Target: {x: -104.328224, y: -45.478012, z: -86.2253}
+    speed: 2
+    m_Value: {x: -104.328224, y: -45.478012, z: -86.2253}
+>>>>>>> Scene-transistions-&-Bug-Fixes
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -426,6 +453,7 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: 0.15776505, y: -0.83314174, z: 0.30145314, w: 0.43601725}
     speed: 2
     m_Value: {x: 0.15776505, y: -0.83314174, z: 0.30145314, w: 0.43601725}
@@ -433,6 +461,15 @@ MonoBehaviour:
     m_Target: 36.135777
     speed: 2
     m_Value: 36.135777
+=======
+    m_Target: {x: -0.10875244, y: 0.8517599, z: -0.19551371, w: -0.4737641}
+    speed: 2
+    m_Value: {x: -0.10875244, y: 0.8517599, z: -0.19551371, w: -0.4737641}
+  m_Size:
+    m_Target: 162.60948
+    speed: 2
+    m_Value: 162.60948
+>>>>>>> Scene-transistions-&-Bug-Fixes
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -572,18 +609,27 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders: []
+    m_Folders:
+    - Assets/New Assets/SCENES
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
+<<<<<<< HEAD
   m_LastProjectPath: C:\Users\d_sul\Desktop\GPP-Unity-Project
+=======
+  m_LastProjectPath: C:\Users\Luke\Desktop\develop
+>>>>>>> Scene-transistions-&-Bug-Fixes
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 169}
     m_SelectedIDs: 1a290000
     m_LastClickedID: 10522
+<<<<<<< HEAD
     m_ExpandedIDs: 000000007e260000a4260000d426000076270000ae27000046290000002a00005c2a0000682a0000902a00002e2c0000682c0000c02c0000f62c00001c2d0000222d0000502e0000e22e0000824f0000844f0000864f0000
+=======
+    m_ExpandedIDs: 000000006e2c0000be2c0000562d0000b42e0000362f0000ca2f0000e22f0000223000002e30000056300000f23100007e320000b2320000d6320000da320000f633000080340000784100007a4100007c410000
+>>>>>>> Scene-transistions-&-Bug-Fixes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -608,24 +654,31 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: 000000007e26000076270000002a00005c2a0000682a0000902a0000202c00002e2c0000c02c0000f62c0000102d00001c2d0000222d0000824f0000844f0000864f0000
+=======
+    scrollPos: {x: 0, y: 375}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 000000006e2c0000be2c0000562d0000862d0000b42e00001a2f0000ca2f0000e22f0000223000002e30000056300000f23100007e320000b2320000d6320000da320000f6330000784100007a4100007c41000014890000
+>>>>>>> Scene-transistions-&-Bug-Fixes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Cutscene_l1
+      m_OriginalName: Cutscene_l1
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 1604
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
