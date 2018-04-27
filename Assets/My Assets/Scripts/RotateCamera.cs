@@ -51,12 +51,12 @@ public class RotateCamera : MonoBehaviour {
     {
         if (other.isTrigger == false && other.tag == "Player")
         {
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 player_cam.GetComponent<CameraFollow>().offset = right_offset;
             }
 
-            if (Input.GetAxisRaw("Horizontal") < 0)
+            if (Input.GetAxisRaw("Horizontal") > 0)
             {
                 player_cam.GetComponent<CameraFollow>().offset = left_offset;
             }

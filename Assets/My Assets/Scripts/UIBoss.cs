@@ -6,11 +6,17 @@ public class UIBoss : MonoBehaviour {
 
     public int health = 11;
     float current_health;
+    private Transform bar;
     // Use this for initialization
     void Start()
     {
-        transform.parent.gameObject.SetActive(false);
+        //transform.parent.gameObject.SetActive(false);
         current_health = health;
+        bar = transform.parent;
+        foreach (Transform child in bar)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

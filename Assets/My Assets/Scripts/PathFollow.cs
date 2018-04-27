@@ -25,7 +25,6 @@ public class PathFollow : MonoBehaviour
 
         DrawPath();
 
-
         //InvokeRepeating("DrawPath", 2.0f, 1);
     }
 
@@ -47,7 +46,7 @@ public class PathFollow : MonoBehaviour
     {
         if (following)
         {
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 float distance = Mathf.Abs(((_path[next_node].x - transform.position.x)
                     + (_path[next_node].z - transform.position.z)));
@@ -61,7 +60,7 @@ public class PathFollow : MonoBehaviour
                 }
             }
 
-            if (Input.GetAxisRaw("Horizontal") < 0 && next_node >= 1)
+            if (Input.GetAxisRaw("Horizontal") > 0 && next_node >= 1)
             {
                 float distance = Mathf.Abs((_path[prev_node].x - transform.position.x)
                     + (_path[prev_node].z - transform.position.z));

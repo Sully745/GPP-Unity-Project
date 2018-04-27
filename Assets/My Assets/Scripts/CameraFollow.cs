@@ -14,6 +14,9 @@ public class CameraFollow : MonoBehaviour {
     GameObject see_through_object;
     Color see_through_object_color;
 
+    public bool close_camera;
+    public GameObject close_cam_pos;
+
     public Transform side_cam_left;
     public Transform side_cam_right;
 
@@ -39,6 +42,7 @@ public class CameraFollow : MonoBehaviour {
 
     GameObject closest_enemy;
     public GameObject UI;
+
 
     // Use this for initialization
     void Start() {
@@ -233,6 +237,11 @@ public class CameraFollow : MonoBehaviour {
         {
             transform.position = Vector3.SmoothDamp(transform.position, target_position, ref velocity, smooth_time);
         } 
+
+        if(close_camera)
+        {
+            transform.position = Vector3.Lerp(transform.position, close_cam_pos.transform.position, Time.deltaTime * 5f);
+        }
     }
 
     public IEnumerator CameraShake(float duration, float magnitude)

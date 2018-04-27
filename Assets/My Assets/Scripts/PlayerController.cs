@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor.Events;
 using XInputDotNetPure; // Required in C#
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -14,13 +14,19 @@ public class PlayerController : MonoBehaviour {
     public CapsuleCollider capsule;
     public Camera player_camera;
     public Camera target_camera;
-    public ParticleSystem[] jump_ring;
-    public ParticleSystem[] speed_trail;
+    public Transform restart_pos;
+    bool restarted = false;
+    //public ParticleSystem[] jump_ring;
+    //public ParticleSystem[] speed_trail;
     public ParticleSystem goo_hit;
     public Vector3 DirectionSlope;
     public float SlopeAngle;
     public Image red_screen;
     public Text death_text;
+
+    private S_Flames flames;
+    private S_Lightning lightning;
+    private S_Smoke smoke;
 
     public int double_jump_forward_velocity;
 
@@ -39,11 +45,12 @@ public class PlayerController : MonoBehaviour {
     bool is_falling = false;
     bool jumping = false;
     bool start_fall = false;
-    bool can_move = true;
-    bool can_action = true;
+    public bool can_move = true;
+    public bool can_action = true;
     public bool following_path = true;
     public int health = 100;
     public bool knocked = false;
+    public bool interact = false;
 
     float falling_velocity = -4f;
     float move_speed = 0.0f;
@@ -79,18 +86,22 @@ public class PlayerController : MonoBehaviour {
     {
         death_text.enabled = false;
 
-        foreach (ParticleSystem effect in speed_trail)
-        {
-            effect.Stop();
-        }
-        foreach (ParticleSystem effect in jump_ring)
-        {
-            effect.Stop();
-        }
+        //foreach (ParticleSystem effect in speed_trail)
+        //{
+        //    effect.Stop();
+        //}
+        //foreach (ParticleSystem effect in jump_ring)
+        //{
+        //    effect.Stop();
+        //}
         //get components 
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         capsule = GetComponent<CapsuleCollider>();
+
+        flames = GetComponent<S_Flames>();
+        lightning = GetComponent<S_Lightning>();
+        smoke = GetComponent<S_Smoke>();
 
         target_camera.enabled = false;
         player_camera.enabled = true;
@@ -128,7 +139,7 @@ public class PlayerController : MonoBehaviour {
         Inputs();
         IsGrounded();
         Gravity();
-        SpeedUpParticle();
+        //SpeedUpParticle();
 
         animator.SetInteger("health", health);
     }
@@ -141,7 +152,9 @@ public class PlayerController : MonoBehaviour {
         rb.angularVelocity = Vector3.zero;
         animator.applyRootMotion = true;
         animator.SetTrigger("Attack " + attack + " Trigger");
+        interact = true;
         yield return new WaitForSeconds(time);
+        interact = false;   
         animator.applyRootMotion = false;
         can_action = true;
         can_move = true;
@@ -367,7 +380,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Jumping()
-    {        
+    {
         if (IsGrounded())
         {
             if (Input.GetButtonDown("Jump") && !jumping && can_action && !is_falling)
@@ -379,7 +392,9 @@ public class PlayerController : MonoBehaviour {
         {
             StartCoroutine(PlayerJump());
             double_jump_used = true;
-            DoubleJumpParticle();
+            smoke.SmokePlay(2.0f);
+
+            //DoubleJumpParticle();
         }
         else
         {
@@ -392,20 +407,20 @@ public class PlayerController : MonoBehaviour {
                         animator.SetTrigger("Jumping Trigger");
                         start_fall = true;
                     }
-                }                
-            }           
+                }
+            }
         }
     }
 
     public IEnumerator PlayerJump()
     {
         jumping = true;
-        can_action = false;        
+        can_action = false;
         animator.SetInteger("Jumping Int", 1);
         animator.SetTrigger("Jumping Trigger");
-        if(!double_jump_used && double_jump)
+        if (!double_jump_used && double_jump)
         {
-            if(rb.velocity.x >= 0.1 || rb.velocity.z >= 0.1
+            if (rb.velocity.x >= 0.1 || rb.velocity.z >= 0.1
                 || rb.velocity.x <= -0.1 || rb.velocity.z <= -0.1)
             {
                 rb.AddRelativeForce(Vector3.forward * double_jump_forward_velocity, ForceMode.Impulse);
@@ -415,21 +430,26 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
-        rb.velocity = new Vector3(0, 0, 0);
-
-        Vector3 new_jump = input_vector * 100 + new Vector3(0, jump_force, 0);
-        //rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
-        rb.AddForce(new_jump, ForceMode.Impulse);
+        if (grounded)
+        {
+            rb.AddForce(0, jump_force, 0, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+            Vector3 new_jump = input_vector * 100 + new Vector3(0, jump_force, 0);
+            rb.AddForce(new_jump, ForceMode.Impulse);
+        }
 
         yield return new WaitForSeconds(.4f);
         can_action = true;
-        jumping = false;        
+        jumping = false;
     }
 
     bool IsGrounded()
     {
         if (Physics.CheckCapsule(capsule.bounds.center,
-            new Vector3(capsule.bounds.center.x, capsule.bounds.min.y -1f, capsule.bounds.center.z),
+            new Vector3(capsule.bounds.center.x, capsule.bounds.min.y - 1f, capsule.bounds.center.z),
             .5f, 1, QueryTriggerInteraction.Ignore) && SlopeAngle < 45)
         {
             start_fall = false;
@@ -443,8 +463,9 @@ public class PlayerController : MonoBehaviour {
             }
             grounded = true;
             return true;
+
         }
-        else if (dist_to_ground < 3 && SlopeAngle <= 45)
+        else if (dist_to_ground < 1.5 && SlopeAngle <= 45)
         {
             start_fall = false;
             if (!jumping)
@@ -453,6 +474,8 @@ public class PlayerController : MonoBehaviour {
             }
             grounded = true;
             return true;
+            //return false;
+
         }
         else
         {
@@ -482,10 +505,14 @@ public class PlayerController : MonoBehaviour {
         switch (powerup_type)
         {
             case PowerupType.DOUBLEJUMP:
-                StartCoroutine(DoubleJump(duration));
+                lightning.LightningPlay(duration);
+                StopCoroutine("DoubleJump");
+                StartCoroutine("DoubleJump", duration);
                 break;
             case PowerupType.DOUBLESPEED:
-                StartCoroutine(SpeedUp(duration));
+                flames.FlamePlay(duration);
+                StopCoroutine("SpeedUp");
+                StartCoroutine("SpeedUp", duration);
                 break;
             case PowerupType.HEALTH:
                 health += 10;
@@ -500,59 +527,59 @@ public class PlayerController : MonoBehaviour {
     IEnumerator DoubleJump(float duration)
     {
         double_jump = true;
-        jump_ring[3].Play();
+        //jump_ring[3].Play();
         yield return new WaitForSeconds(duration);
-        jump_ring[3].Stop();
+        //jump_ring[3].Stop();
         double_jump = false;
     }
 
 
-    void SpeedUpParticle()
-    {
-        if (speed_up == true)
-        {
-            if (input_run > 0.8f && !speed_trail[0].isPlaying)
-            {
-                speed_trail[0].Play();
-            }
-            else if (input_run < 0.8f && speed_trail[0].isPlaying)
-            {
-                speed_trail[0].Stop();
-            }
+    //void SpeedUpParticle()
+    //{
+    //    if (speed_up == true)
+    //    {
+    //        if (input_run > 0.8f && !speed_trail[0].isPlaying)
+    //        {
+    //            speed_trail[0].Play();
+    //        }
+    //        else if (input_run < 0.8f && speed_trail[0].isPlaying)
+    //        {
+    //            speed_trail[0].Stop();
+    //        }
 
-            if (!speed_trail[1].isPlaying)
-            {
-                speed_trail[1].Play();
-            }
-        }
-    }
+    //        if (!speed_trail[1].isPlaying)
+    //        {
+    //            speed_trail[1].Play();
+    //        }
+    //    }
+    //}
 
     IEnumerator SpeedUp(float duration)
     {
-        speed_trail[0].Play();
+        //speed_trail[0].Play();
 
         speed_up = true;
         run_speed = 17.0f;
         walk_speed = 8f;
         animator.speed = 1.5f;
         yield return new WaitForSeconds(duration);
-        foreach (ParticleSystem effect in speed_trail)
-        {
-            effect.Stop();
-        }
+        //foreach (ParticleSystem effect in speed_trail)
+        //{
+        //    effect.Stop();
+        //}
         animator.speed = 1;
         run_speed = 10.0f;
         walk_speed = 5f;
         speed_up = false;
     }
 
-    void DoubleJumpParticle()
-    {
-        foreach(ParticleSystem effect in jump_ring)
-        {
-            effect.Play();
-        }
-    }
+    //void DoubleJumpParticle()
+    //{
+    //    foreach(ParticleSystem effect in jump_ring)
+    //    {
+    //        effect.Play();
+    //    }
+    //}
 
     private void OnParticleCollision()
     {
@@ -627,6 +654,35 @@ public class PlayerController : MonoBehaviour {
             rotation_speed = 0;
             red_screen.GetComponent<UIRedScreen>().increment = .0008f;
             red_screen.GetComponent<UIRedScreen>().target_a = .6f;
+            if (!restarted)
+            {
+                //restart(5);
+                StartCoroutine(restart(5));
+            }
+
+        }
+    }
+
+    IEnumerator restart(int time)
+    {
+        yield return new WaitForSeconds(time);
+        Debug.Log("22");
+        if (SceneManager.GetActiveScene().name == "GPP LEVEL 3")
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            transform.position = restart_pos.position;
+            death_text.enabled = false;
+            is_dead = false;
+            walk_speed = 5.0f;
+            run_speed = 10.0f;
+            rotation_speed = 40;
+            red_screen.GetComponent<UIRedScreen>().increment = 1;
+            red_screen.GetComponent<UIRedScreen>().target_a = 0f;
+            restarted = false;
+            health = 100;
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CurrentState
 {
@@ -15,6 +16,7 @@ public class BehaviourBloxor : MonoBehaviour {
     public int health;
     public int max_health = 3;
     public int damage = 20;
+    public bool is_boss = false;
 
     [Header("Attack Stats")]
     public float range = 100;
@@ -65,12 +67,24 @@ public class BehaviourBloxor : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         InvokeRepeating("Direction", 0, repeat_rate);
         prev_state = current_state;
-        boss_bar.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        if (is_boss)
+        {
+            foreach (Transform child in boss_bar.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+        
         distance_to_player = Vector3.Distance(transform.position, target.transform.position);
         //Debug.Log(distance_to_player);
         Die();
@@ -91,19 +105,19 @@ public class BehaviourBloxor : MonoBehaviour {
                 current_state = prev_state;
             }
         }
-        if (distance_to_player < 20 && player_health > 0)
+        if (distance_to_player < 40 && player_health > 0)
         {
             current_state = CurrentState.ATTACKING;            
         }
-        
-        if (current_state == CurrentState.ATTACKING && boss_bar.GetComponentInChildren<UIBoss>().health > 0)
-        {
-            boss_bar.SetActive(true);            
-        }
-        else
-        {
-            boss_bar.SetActive(false);
-        }        
+
+        //if (current_state == CurrentState.ATTACKING && boss_bar.GetComponentInChildren<UIBoss>().health > 0 && is_boss)
+        //{
+        //    boss_bar.SetActive(true);
+        //}
+        //else
+        //{
+        //    boss_bar.SetActive(false);
+        //}
     }
 
     void IsGrounded()
@@ -112,12 +126,12 @@ public class BehaviourBloxor : MonoBehaviour {
 
         if (Physics.Raycast(transform.position, Vector3.down, out hit))
         {
-            if (hit.distance <= transform.localScale.x / 2 + .1f)
+            if (hit.distance <= transform.localScale.x / 2 + .5f)
             {
                 if (attack_aoe && hit.collider.tag == "Environment")
                 {
                     Vector3 spawn_pos = transform.position;
-                    spawn_pos.y = 1.5f;
+                    spawn_pos.y = 6.5f;
                     Instantiate(particle_aoe, spawn_pos, Quaternion.Euler(90, 0, 0));
                     attack_aoe = false;
                     StartCoroutine(player_cam.GetComponent<CameraFollow>().CameraShake(.15f, .6f));
@@ -216,7 +230,11 @@ public class BehaviourBloxor : MonoBehaviour {
     IEnumerator TakeDamage()
     {
         health -= 1;
-        boss_bar.GetComponentInChildren<UIBoss>().health -= 1;
+        if (is_boss)
+        {
+            boss_bar.GetComponentInChildren<UIBoss>().health -= 1;
+
+        }
         if (health > 0)
         {
             GetComponent<MeshRenderer>().material = mat_hit;
@@ -231,7 +249,7 @@ public class BehaviourBloxor : MonoBehaviour {
         {
             Instantiate(goo_split, transform.position, Quaternion.identity);
             GameObject health = Instantiate(powerup, transform.position - new Vector3(0, .5f, 0), Quaternion.identity);
-            health.GetComponent<Powerup>().this_powerup = PowerupType.HEALTH;
+            //health.GetComponent<Powerup>().this_powerup = PowerupType.HEALTH;
             if (max_health > 1)
             {
                 for (int i = 0; i < 2; i++)
@@ -242,7 +260,7 @@ public class BehaviourBloxor : MonoBehaviour {
                     clone.GetComponent<BehaviourBloxor>().has_attacked = true;
                     clone.transform.localScale += new Vector3(-1f, -1f, -1f);
                 }
-            }            
+            }
             Destroy(gameObject);
         }
     }
