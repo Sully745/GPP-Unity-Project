@@ -81,11 +81,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Cutscene_l1.cs" />
+    <Compile Include="Assets\Cutscene_l2.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_CameraCutscene.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_ColourGradient.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Flames.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Lightning.cs" />
     <Compile Include="Assets\EFFECTS\SCRIPTS\S_Smoke.cs" />
+    <Compile Include="Assets\GMCreation.cs" />
     <Compile Include="Assets\My Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\My Assets\Scripts\BehaviourBloxor.cs" />
     <Compile Include="Assets\My Assets\Scripts\BreakablePlatform.cs" />
@@ -157,6 +160,7 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpTimer.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpUpgrade.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Line.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Patrick\LvL2CamChange.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\MovingPlatforms.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\PlatformCollision.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Powerup.cs" />
@@ -169,6 +173,8 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalker.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalkerMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\UpgradeController.cs" />
+    <Compile Include="Assets\PersistantUI.cs" />
+    <Compile Include="Assets\TriggerBridge.cs" />
     <Compile Include="Assets\WaterRespawn.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>

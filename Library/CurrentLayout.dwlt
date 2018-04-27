@@ -43,7 +43,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 11
+  controlID: 53
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 12
+  controlID: 54
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -343,28 +343,28 @@ MonoBehaviour:
     height: 926
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 86910600
-    m_LastClickedID: 430470
-    m_ExpandedIDs: 547bfdff0601ffff7634fffff863ffff728cffffdc8cffffd8a4ffff08bbffff64d0ffff0edbffff7ee0ffff24f6ffffe6fbfffff4ffffff00000000ce8b00005ec7000070aa0100
+    m_SelectedIDs: ee330000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 5845fcff9085fcffdc98fcff80b5fcffe277ffffb289ffff02ccffff2ef2ffff32fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: BossHealthOutline
-      m_OriginalName: BossHealthOutline
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -29636
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
   m_ExpandedScenes:
-  - GPP LEVEL 2
+  - GPP OVERWORLD
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -400,9 +400,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 48.12266, y: 50.476936, z: -4.8829856}
+    m_Target: {x: -104.328224, y: -45.478012, z: -86.2253}
     speed: 2
-    m_Value: {x: 48.12266, y: 50.476936, z: -4.8829856}
+    m_Value: {x: -104.328224, y: -45.478012, z: -86.2253}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -425,13 +425,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.25178984, y: 0.7233488, z: -0.33010793, w: -0.551722}
+    m_Target: {x: -0.10875244, y: 0.8517599, z: -0.19551371, w: -0.4737641}
     speed: 2
-    m_Value: {x: -0.25178984, y: 0.7233488, z: -0.33010793, w: -0.551722}
+    m_Value: {x: -0.10875244, y: 0.8517599, z: -0.19551371, w: -0.4737641}
   m_Size:
-    m_Target: 0.07088113
+    m_Target: 162.60948
     speed: 2
-    m_Value: 0.07088113
+    m_Value: 162.60948
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -577,13 +577,13 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\kingd\Desktop\Uni Y2 Work\Gameplay Programming\GPP-Unity-Project
+  m_LastProjectPath: C:\Users\Luke\Desktop\develop
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 169}
     m_SelectedIDs: 1a290000
     m_LastClickedID: 10522
-    m_ExpandedIDs: 000000007e260000d426000076270000de28000062290000002a00001a2a00005c2a0000682a0000902a00002e2c0000c02c0000f62c00001c2d0000222d0000502e0000e22e0000105c0000125c0000145c0000
+    m_ExpandedIDs: 000000006e2c0000be2c0000562d0000b42e0000362f0000ca2f0000e22f0000223000002e30000056300000f23100007e320000b2320000d6320000da320000f633000080340000784100007a4100007c410000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -608,21 +608,21 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 116}
+    scrollPos: {x: 0, y: 375}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007e260000d426000076270000de28000062290000002a00001a2a00005c2a0000682a0000902a00002e2c0000c02c0000f62c00001c2d0000222d0000502e0000e22e0000105c0000125c0000145c0000
+    m_ExpandedIDs: 000000006e2c0000be2c0000562d0000862d0000b42e00001a2f0000ca2f0000e22f0000223000002e30000056300000f23100007e320000b2320000d6320000da320000f6330000784100007a4100007c41000014890000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: GPP LEVEL 2
-      m_OriginalName: GPP LEVEL 2
+      m_Name: Cutscene_l1
+      m_OriginalName: Cutscene_l1
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 11460
+      m_UserData: 1604
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -718,7 +718,7 @@ MonoBehaviour:
     y: 92
     width: 550
     height: 926
-  m_ScrollPosition: {x: 0, y: 120}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -192
