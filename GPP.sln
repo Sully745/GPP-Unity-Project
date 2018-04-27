@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPP", "GPP.csproj", "{80661970-D035-2B9B-95D6-B38D1C2E8503}"
 EndProject
 Global
