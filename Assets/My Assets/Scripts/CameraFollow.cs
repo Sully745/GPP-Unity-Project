@@ -43,15 +43,6 @@ public class CameraFollow : MonoBehaviour {
     GameObject closest_enemy;
     public GameObject UI;
 
-    private static bool created = false;
-    private void Awake()
-    {
-        if (!created)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            created = true;
-        }
-    }
 
     // Use this for initialization
     void Start() {

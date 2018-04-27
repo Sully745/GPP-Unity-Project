@@ -25,7 +25,6 @@ public class PathFollow : MonoBehaviour
 
         DrawPath();
 
-
         //InvokeRepeating("DrawPath", 2.0f, 1);
     }
 

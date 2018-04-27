@@ -33,6 +33,8 @@ public class TriggerLevel : MonoBehaviour
         float fadeTime = GM.GetComponent<FadeScene>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime * 5);
         SceneManager.LoadScene(level, LoadSceneMode.Single);
+        Debug.Log(spawn_index + " index");
+        Debug.Log(level + " level");
         player.transform.position = GM.GetComponent<FadeScene>().spawn_index[spawn_index].transform.position;
         spawn_index = 0;
     }

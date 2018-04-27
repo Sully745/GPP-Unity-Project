@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPP-Unity-Project", "GPP-Unity-Project.csproj", "{313F8C0A-60E1-B259-2B17-20E6AE3C9CD0}"
 EndProject
 Global

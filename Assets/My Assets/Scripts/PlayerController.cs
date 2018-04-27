@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour {
     public bool following_path = true;
     public int health = 100;
     public bool knocked = false;
+    public bool interact = false;
 
     float falling_velocity = -4f;
     float move_speed = 0.0f;
@@ -79,16 +80,6 @@ public class PlayerController : MonoBehaviour {
     GamePadState state;
     GamePadState prevState;
     // Use this for initialization
-
-    private static bool created = false;
-    private void Awake()
-    {
-        if (!created)
-        {
-            DontDestroyOnLoad(this.gameObject);
-            created = true;
-        }
-    }
     void Start ()
     {
         death_text.enabled = false;
@@ -159,7 +150,9 @@ public class PlayerController : MonoBehaviour {
         rb.angularVelocity = Vector3.zero;
         animator.applyRootMotion = true;
         animator.SetTrigger("Attack " + attack + " Trigger");
+        interact = true;
         yield return new WaitForSeconds(time);
+        interact = false;   
         animator.applyRootMotion = false;
         can_action = true;
         can_move = true;

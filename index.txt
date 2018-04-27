@@ -1,0 +1,12 @@
+spawn index
+
+0 -> overworld og spawn point
+1 -> exit factory main
+2 -> exit factory side
+3 -> exit level 2
+4 -> exit castle
+
+5 -> enter factory main
+6 -> enter factory side
+7 -> enter level 2
+8 -> enter castle
