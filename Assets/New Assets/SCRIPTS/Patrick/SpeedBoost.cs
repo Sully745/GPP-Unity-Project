@@ -22,9 +22,10 @@ public class SpeedBoost : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            Player = collision.gameObject;
             //Player.GetComponent<PlayerController>().speed_up = true;
             type = PowerupType.DOUBLESPEED;
-            Player.GetComponent<PlayerController>().ActivatePowerup(type, 10);
+			Player.GetComponent<PlayerController> ().ActivatePowerup (type, 5f);
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
             StartCoroutine(Wait());
@@ -33,7 +34,7 @@ public class SpeedBoost : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<BoxCollider>().enabled = true;
     }
