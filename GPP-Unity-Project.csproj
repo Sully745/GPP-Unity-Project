@@ -81,8 +81,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Cutscene_l1.cs" />
+    <Compile Include="Assets\Cutscene_l2.cs" />
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_CameraCutscene.cs" />
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_ColourGradient.cs" />
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_Flames.cs" />
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_Lightning.cs" />
+    <Compile Include="Assets\EFFECTS\SCRIPTS\S_Smoke.cs" />
+    <Compile Include="Assets\EndGame.cs" />
+    <Compile Include="Assets\HealthPickup.cs" />
     <Compile Include="Assets\My Assets\Scripts\Angle.cs" />
     <Compile Include="Assets\My Assets\Scripts\BehaviourBloxor.cs" />
+    <Compile Include="Assets\My Assets\Scripts\BreakablePlatform.cs" />
     <Compile Include="Assets\My Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\My Assets\Scripts\DestroyParticleSystem.cs" />
     <Compile Include="Assets\My Assets\Scripts\DoorAnimation.cs" />
@@ -90,11 +100,13 @@
     <Compile Include="Assets\My Assets\Scripts\EditorPath.cs" />
     <Compile Include="Assets\My Assets\Scripts\EnemyPath.cs" />
     <Compile Include="Assets\My Assets\Scripts\EnemyPathEditor.cs" />
+    <Compile Include="Assets\My Assets\Scripts\Enums.cs" />
     <Compile Include="Assets\My Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\My Assets\Scripts\ObjectEditorPath.cs" />
     <Compile Include="Assets\My Assets\Scripts\ObjectPathFollow.cs" />
     <Compile Include="Assets\My Assets\Scripts\PathFollow.cs" />
     <Compile Include="Assets\My Assets\Scripts\PatrolArea.cs" />
+    <Compile Include="Assets\My Assets\Scripts\PlatformControllerLevel2.cs" />
     <Compile Include="Assets\My Assets\Scripts\PlatformCoupling.cs" />
     <Compile Include="Assets\My Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\My Assets\Scripts\RotateCamera.cs" />
@@ -116,6 +128,8 @@
     <Compile Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs" />
     <Compile Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Assets\New Assets\ANIMATION\Elements\ImageEffects\Scripts\Triangles.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Connor\PressurePlatform.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoCt1Once.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorAutoTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorButtonTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorCollectableTrigger.cs" />
@@ -128,20 +142,31 @@
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorKeyTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorPressureTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\DoorTimedTrigger.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\ExplodeDoor.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\ExplosionForce.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\FadeScene.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\GMCreation.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\KeyPickUp.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\L1_Key.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\L2_Key.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\MoveToPos.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PersistantUI.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PressurePlatformTrigger.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\PressurePlatfromController.cs" />
-    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerNextLevel.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerBridge.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerLevel.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\D&apos;Arcy\TriggerPreviousLevel.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Bezier.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierControlPointMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\BezierSpline.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Camera2_5D.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Checkpoint.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Patrick\CheckpointBox.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpBoost.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpTimer.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\JumpUpgrade.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Line.cs" />
+    <Compile Include="Assets\New Assets\SCRIPTS\Patrick\LvL2CamChange.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\MovingPlatforms.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\PlatformCollision.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\Powerup.cs" />
@@ -154,6 +179,7 @@
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalker.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\SplineWalkerMode.cs" />
     <Compile Include="Assets\New Assets\SCRIPTS\Patrick\UpgradeController.cs" />
+    <Compile Include="Assets\WaterRespawn.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>
   <ItemGroup>
